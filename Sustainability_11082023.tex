@@ -1,0 +1,1301 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[sustainability,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+%----------
+% journal
+%----------
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2023}
+\copyrightyear{2023}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{6 June 2023} 
+\daterevised{5 July 2023} 
+\dateaccepted{} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+\usepackage{lipsum} 
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{array}
+\usepackage{makecell, multirow}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{adjustbox}
+\usepackage{verbatim}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Image Segmentation by GRASS GIS Scripting Techniques for Monitoring Flooded Areas in Sudd Wetlands, South Sudan}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Image Segmentation by GRASS GIS Scripting Techniques for Monitoring Flooded Areas in Sudd Wetlands, South Sudan}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Polina Lemenkova $^{1}$*\orcidA{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), \'{E}cole polytechnique de Bruxelles (Brussels Faculty of Engineering), Université Libre de Bruxelles (ULB). Building L, Campus du Solbosch, ULB -- LISA CP165/57, Avenue Franklin D. Roosevelt 50, Brussels 1050, Belgium.
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: polina.lemenkova@ulb.be; Tel.: +32 471 86 04 59 (P.L.)}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{Automatic segmentation is one of the important tasks required in satellite image processing for pattern recognition in environmental applications. This paper presents objects detection algorithms of GRASS GIS applied for Landsat 8-9 OLI/TIRS data. The study area includes Sudd wetlands located in South Sudan. It is the largest wetland area in the world and the largest swamp area in the Nile Basin. The effects from hydrological, climate and anthropogenic factors results in annual flooding of Sudd which yearly varies in extent and intensity. At the same time, Sudd marshes provide key water and food resource for population and habitat for species. A script-based framework of image processing is presented the GRASS GIS for monitoring Sudd swamps using a time series of nine Landsat images from 2015 to 2023. The methodology includes image segmentation by 'i.segment' module, image clustering and classification by 'i.cluster' and 'i.maxlike' modules, accuracy assessment by 'r.kappa' module and cartographic mapping implemented using GRASS GIS. The benefits of object detection techniques for image analysis are demonstrated with reported and explained effects of various threshold levels of segmentation. The implications of this cartographic approach for landscape analysis to a specific type of freshwater swamps are discussed. The GRASS GIS techniques are successfully employed to detect changes in inundated areas of Sudd wetlands during recent nine years, to contribute to the environmental monitoring of East Africa.} 
+
+% Keywords
+\keyword{Africa; environmental monitoring; GRASS GIS; image analysis; image processing; image segmentation; remote sensing; satellite image; script; wetland}
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+\PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
+\MSC{86A30; 86-08; 86A99; 86A04}
+\JEL{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}
+
+\begin{document}
+
+%----------- section ----------->
+\section{Introduction}
+
+\subsection{Background} 
+
+A satellite image is far from being a random configuration of pixels. Rather, it exhibits a high degree of organisation, e.g., reflected in its spatial and spectral properties, such as geometric shapes of land cover types, various levels of brightness and texture of patterns. With this regard, one of the main tasks in satellite image processing is the detection of image structure such as polygons and groups of pixels which form a fundamental matrix of image \cite{Solomon}. The most widely accepted approach to this task is image segmentation which partitions the image into several segments representing distinct regions based on the characteristics of the pixels constituting the image. The algorithms of image partition divide a whole image into multiple segments with a general aim to discriminate relevant and important parts of the image from the entire array of pixels on the image \cite{LI202326,DONG2022109695,WANG2023110415}. 
+
+Satellite image segmentation have received significant attention in recent years. Models developed for it have been used in numerous applications such as surficial materials mapping \cite{6947039}, machine learning based computer vision \cite{8914551}, change detection threshold techniques \cite{6005084}, contextual pattern recognition for object detection \cite{10006917,9719051,4284070}, statistical segmentation \cite{7730056,7877513}, fusion detection with spectral and thermal feature combination \cite{7730710}, and texture synthesis \cite{576322} among many others.
+Segmentation of a satellite image is based on a probabilistic modelling which is applicable to a wide range of image structures \cite{Buscombe}. 
+
+Through detecting objects and boundaries, segmentation supplies essential information for detecting relevant landscape patches of the Earth visible on spaceborne images at various scales \cite{Tzotsos}. The essential part of the segmentation algorithm consist in partition of image using threshold which analyses the natural image and seeks to divide the image into the regions of interest and other parts through analysis of the properties of pixels characterising land cover types in the landscapes. Various modifications of threshold algorithm exist that aim to optimise the process. The examples include for instance, multilevel thresholding \cite{9983775,8304271,8633236}, double threshold approach for two-dimensional Otsu image segmentation \cite{9421654,6066573}, weighted threshold algorithm using thread segmentation \cite{7493998} mean-shift clustering algorithm \cite{BARBATO2022100823}, to mention a few of these.
+
+\hl{Specifically for} remote sensing applications, segmentation recognises objects through grouping pixels with similar values of spectral reflectance identified as threshold values into unique segments on the image \cite{PAL20229964}. \hl{Threshold algorithm presents the efficient method of image partition which employs the machine vision to derive the parameters of pixels discriminating the region of interest on the image from the background using properties of cells} \cite{6100288}. \hl{The extended approach of multi-level thresholding divides the image into multiple regions based on the level of colour intensity defined for each segment} \cite{9244772,5721309,6755644}.
+
+Selected \hl{previous works} on satellite image segmentation \hl{include} various developed algorithms, e.g., discriminating the regions against neighbours by semantic approach and normalisation using deep features in network convergence \cite{WANG2023108734}, contrasting land categories using diversity in pixels and smoothing shapes of the regions \cite{MAURYA2023102078}, iterative mean-shift clustering optimisation \cite{6351712}, layering images and segmenting through the R-Convolutional Neural Networks (CNN) \cite{8519391}, evaluating the saliency in pixels using weighted dissimilarities in patches \cite{6727739}, extracting contours by simplification \cite{WU20151133,8630683}. Relevant examples of satellite image processing show that segmentation applied to environmental mapping gives rise to a semantically meaningful detection of vegetation assemblages which are equivalent to habitats \cite{MUNYATI20131}. 
+
+Intuitively, using patchy texture of image enables detection of homogenous habitats for use in various image processing and computer vision applications in environmental analysis. The advantage of \hl{employing} segmentation approach in remote sensing data analysis is that the results are based on feature extraction independent of the choice of parametrisation of segments. A wide range of satellite image segmentation \hl{has} also been reported with case studies including the detection of shoreline \cite{ERDEM2021964}, burned areas \cite{KOTARIDIS2023100944,Toulouse}, or forest variables \cite{MAKELA200166} and change detection in wetlands \cite{ZHANG2023129590}. If a trackable parametrisation exist, similar to image classification, then it can be used directly with no loss of information in\hl{ }segmentation \cite{Kharma}. In such cases, the strategy of object detection in segmentation algorithms is based on identification of the regions \hl{on} the image which present an assembly of contiguous pixels that meet threshold criteria \cite{Aalan,Awad}. 
+
+Conventional spectral clustering techniques have revealed critical links between the polygonal approximation and the definition of the segments in image partition\hl{. This is achieved }using the embedded segmentation algorithms \cite{Saha,Pugazhenthi,Congetal2018}. More complex cases reduce the level of the fragmentation through contouring segment carcasses derived from the upscaled colour texture features and adjusted to the level of fragmentation \cite{1370344}. In this way, colour features perform better in the classification tasks since the region is formed by an optimised size of clusters forming segments of pixels that depict their major contour and colours \cite{1421832}. Such similarity between the segments and separated objects can further be used to convert the bitmap image into segments. Other algorithms include image filtering which can be performed through similarity of pixels analysed by Euclidean and Mahalanobis distance, and segmentation that splits the image into several clusters on the scene \cite{8302195,9302320,5432655}. 
+
+A major advantage of the machine learning approach to remote sensing applications and computer vision is that it allows the optimised modelling through algorithms of automatic image processing \cite{Yamashita,OLIVEIRA2020111830,Bauer,Onishi}. Thus, specifically for image segmentation, machine learning proposes embedded techniques of image discrimination to find the contours of the objects \cite{10073848,8402497,9113204}. However, the general workflow of image partition is still not fully automated for geospatial data and requires an optimised approach. This especially concerns such tasks as object recognition, image partition, and identification of image segments as separated objects for satellite imagery. Meanwhile, using segmentation techniques for remote sensing data processing suggested the benefits of automation for environmental monitoring through extracting of spatial information \cite{Colwell}. 
+
+Given the benefits of image segmentation algorithms, their geospatial application to satellite image partition promises to be the advantageous technique for environmental monitoring. \hl{Image processing technique using only classification approach is suitable for capturing categories of land patches since it operates without any prior information or training samples. On the other hand, using segmentation prior to classification increases accuracy, since it helps extract features in an image using image partition which improves classification process. } For example, landscape pattern recognition can be implemented using the partition of the bitmap satellite image by optimization techniques of regrouping the patches \cite{Lietal2017}. Moreover, the approaches of change detection based on image segmentation are often used for mapping based on the remote sensing data \cite{LeiNandi}. 
+
+In view of the discussed benefits of the advanced methods of image analysis, the GRASS GIS scripting framework was applied in this work for environmental monitoring of East African landscapes with a case study of Sudd wetlands, South Sudan. \hl{The} strategy of scripting is successful in the case of automatic image processing and to implement the optimise workflow of image processing \cite{Borcard,ijgi11090473}. \hl{Automatic image processing using scripts enables to avoid erroneous matching of pixels and misclassification while grouping cells into clusters due to finding correspondences among pixels with similar sspectral reflectanes using machine-based algorithms of computer vision.}
+
+\subsection{Motivation} 
+
+It has been shown that segmentation serves as a useful seed for image classification and detection \hl{of }land cover classes. Therefore, in this paper, an automated segmentation of the Landsat satellite images using a region growing and merging algorithm is presented. The employed approach includes a script-based framework by the Geographic Resources Analysis Support System (GRASS) Geographic Information System (GIS) \cite{Neteleretal2008}. The GRASS GIS\hl{ }was used due to its high computational functionality, cartographic functionality, logic and flexibility of syntax \cite{NetelerMitasova2008}. Such advantages of \hl{the software} enable to improve the performance of image segmentation, clustering and classification for recognition of land cover classes in Sudd wetlands of South Sudan, Eastern Africa. 
+
+\hl{The} segmentation \hl{was }compiled \hl{using} nine Landsat images as a preprocessing step for image classification. The main idea behind\hl{ }segmentation is to use the collection of the\hl{ raster }scenes obtained from the archives of the United States Geological Survey (USGS)\hl{ }for detection of landscape patches to map flooded areas of Sudd wetlands which experience spatio-temporal changes over time \cite{Petersen,SOSNOWSKI201651,Mulatu}. To demonstrate the value of image segmentation techniques, we use them as priors in image classification and object detection as land cover classes. The classified series of images provides insights into the characteristics of flooded marshes and surrounding landscapes on Sudd region reflected on the images \cite{CHEN201417}. 
+
+The problem of image segmentation is addressed by presenting \hl{the }advanced scripting algorithm based on the GRASS GIS syntax \cite{Lemenkova202125,jmse11040871,HOFIERKA2009387,technologies11020046}. In contrast to the existing image classification techniques which group pixels with similar spectral reflectance into classes \cite{DIVITTORIO20181,info14040249,Campos,Lemenkova202229},\hl{ }image segmentation is an object-based recognition techniques. It enables to identify contiguous region blocks on the images based on landscape categories. This presents a more advanced approach which is useful both independently and linked to the next object-oriented classification process for noise reduction and to increase of effectiveness of image processing \hl{through the increased accuracy and speed of image processing}. Several modules of the GRASS GIS were applied to provide a new foundation for the automatic segmentation of the short-term time series of the satellite images. Of these, the most important module 'i.segment' was used to detect patches in wetlands, and 'i.maxlik' was used for image classification. Image analysis aimed at assessing the difference in the flooded areas by pixels assigned to segments as groups of the image processed as bitmap graphics. The example of satellite image segmentation and classification using GRASS GIS syntax is discussed to show how the general theory of image partition is applied to a particular case of East African wetlands.
+
+%----------- section ----------->
+\section{Study Area}
+
+Sudd is a large area of wetlands located in South Sudan (Figure \ref{fig01}). 
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering
+	\hspace{130pt}\includegraphics[width=14.0 cm]{Fig_01.jpg}
+\end{adjustwidth}
+\caption{Topographic map of South Sudan. Software: GMT v. 6.1.1. Data source: GEBCO. Rotated read square shows the study area of Sudd wetlands. Map source: author.
+\label{fig01}}
+\end{figure}
+
+A total area of swamps is varying between 30,000 to $40,000 km^2$ according to wet or dry seasons \cite{MohamedSavenije}. The origin of wetlands is strongly related to the geologic evolution of the Nile River basin which affected the development of nearby landscapes \cite{Adamson}. Thus, Sudd wetlands are formed \hl{in course }of geologic development of the Upper Nile\hl{. }Specifically, the study area is situated \hl{around} the Lake No, near the Bahr al-Jabal section \hl{ of the }White Nile (Mountain Nile)\hl{, a} branch \hl{of the Greater Nile} \cite{Broun}. Major geologic units include the Quaternary outcrops with clayey sediments of the Cenozoic (QT) Nile floodplain, Figure \ref{fig02}.  
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering
+	\hspace{130pt}\includegraphics[width=14.0 cm]{Fig_02.jpg}
+\end{adjustwidth}
+\caption{Surficial geologic units in South Sudan and surrounding area. Software: QGIS. Data source: USGS. Map source: author.
+\label{fig02}}
+\end{figure}
+
+The Nile River basin forms a part of the Great Rift Valley which originated from a system of rift and faults with correspondent geomorphic forms such as hilly areas, valleys and plains \cite{CHOROWICZ2005379,Lemenkova202206}. \hl{Possible movements along these faults are reflected in the recent relief and the structure of the Quaternary sediment complex around Sudd. }The \hl{topographic} analysis shows that Sudd region has \hl{a }contrasting \hl{relief} with river meanders having northward-oriented general gradient \cite{PetersenFohrer}. \hl{Moreover, the }topography of south Sudan is strongly \hl{connected }to \hl{the }hydrology of Sudd swamps \hl{which is} reflected in morphological features on seasonally flooded grasslands and slopes. The effects from topography and hydrology of the Nile together with climate factors (precipitation, atmospheric circulation, temperature) determined the formation of \hl{the wetland ecosystems of }Sudd. Thus, plain geomorphology of the Nile floodplain provided perfect conditions for a series of basins which serve as\hl{ }reservoirs and accumulate \hl{water} in Sudd marshes during wet periods \cite{Sutcliffe}. 
+
+Sudd wetlands are formed as a downstream of Lake Victoria and Lake Albert in the Nile basin in Sud geologic province \cite{1792135}, Figure \ref{fig03}. Recently detected diatoms proved the existence of the large Lake Sudd, which covered central and southern Sudan during the Holocene\hl{ when active tectonic structures significantly reduced their activity, acquiring a segmented character of Sudd wetlands} \cite{ELSHAFIE201113}. Other studies also reported \hl{the} existing series of the interconnected\hl{ }basins along the Nile distributed over the territory of modern Sud Province\hl{ }(Figure \ref{fig03}) during Tertiary period \cite{SALAMA1987899}. Such palaeographic conditions contributed to further development of the current lacustrine environment in Sudd. \hl{The} dominated soil type in Sudd wetlands is heavy clays and fine-grained sedimentary rocks \cite{Wolman}. Clayey soil creates \hl{favourable} conditions for the formation of wetlands \hl{due to the} high impermeability and low porosity which \hl{contributes to the} accumulation of water \cite{Lindh202222}. As a consequence, a highly specific hydrogeological structure of the impermeable clays results in a very limited groundwater influence on the hydrology of Sud where a top layer of vertisol is about 50 cm and sands are distributed at depths of 30 m and below \cite{whiteman1971geology}. 
+
+\hl{Climate} factors \hl{affect Sudd swamps} through water balance \cite{SutcliffeParks} and evaporation \cite{DIVITTORIO2021100922}. High evaporation over Sudd marshes results in strong effects on regional water cycle of Nile hydrology \hl{which } are amplified by a large extent of the Sudd wetland area: it is the largest wetland area existing in the world\hl{, }and the largest freshwater swamp region in the Nile Basin\hl{ }\cite{Woodward}. The environmental \hl{measures were} undertaken to decrease the evaporation from Sudd by constructed Jonglei channels \cite{SutcliffeParks1987}. 
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering
+	\hspace{130pt}\includegraphics[width=14.0 cm]{Fig_03.jpg}
+\end{adjustwidth}
+\caption{Geologic provinces in South Sudan and surroundings. Software: QGIS. Data source: USGS. Map source: author.
+\label{fig03}}
+\end{figure}
+
+\hl{Climate} effects \hl{on Sudd wetlands are related to }changes in precipitation and temperature: the increase in rainfall during the El Niño phases leads to\hl{ }warming and\hl{ }rise in temperatures \cite{Birkettetal1999}. \hl{Such factors } threaten the hydrology and environmental sustainability of Sudd wetlands \cite{Mitchell}. Other \hl{climatic }issues are related to the rise of Lake Victoria in 1960s \hl{which triggered} water losses in Sudd \cite{Sutcliffe2018}. \hl{The integrated effects from all these factors result in a highly unstable} dynamics of Sudd hydrology\hl{. Thus, the intensity of} annual flooding \hl{differs significantly} by years and \hl{affects} the extent of wetlands \cite{gabr2013implications}.\hl{ During }wet season, Sudd increases in its extent almost twice due to the exceed of water\hl{ }which results in the extended area of\hl{ floodplains affected by recurring inundation}. 
+
+\hl{Sudd} wetlands play a strategic role for livelihoods, environmental sustainability, biodiversity balance and maintenance of water resources in South Sudan \cite{Benansio}. \hl{The} value of water resources in Sudd relies on its economic and environmental services, high biodiversity impact\hl{, fishery} and food resource \cite{Bailey}\hl{ }necessary for social\hl{ }development and existence of local population \cite{assessment2005ecosystems}. \hl{At the same time, the} ecosystems of Sudd form a part of global tropical wetland system which are important source of biodiversity, carbon storage in soils and vegetation \cite{Thompson}, contribute to biogeochemical cycles and climate regulation \cite{Fynn}. Sudd wetlands are known for hierarchical and complex food webs with diverse types of aquatic plants, animals, and microbial communities. \hl{The} dominating vegetation types in Sudd include papyrus, herbaceous plants, water hyacinth, marsh sedges and grasslands \cite{PACINI2018142}. Their distribution differs \hl{by} habitats \hl{in the} open water areas with floating and submerged plants, and seasonally flooded grassland occupied by the adapted plants. 
+
+Climate-hydrological fluctuations have cumulative environmental effects on sustainability of Sudd ecosystems. \hl{Thus}, during flood period, large areas of grasslands in permanent Sudd swamps are \hl{inundated} which \hl{triggers} fish migration into other sections of the floodplain \cite{Hickley}. Human-related factors affecting Sudd ecosystems include overexploitation of the natural resources, increased pollution \cite{LOW2021113424}, landscape fragmentation \cite{Collins} and habitat changes \cite{NAGENDRA201345} which is reflected in recent dynamics of land cover types in Sudd region. At the same time, small grassland patches are the hotspots of biodiversity in the fragmented landscapes and should be conserved for environmental sustainability \cite{YAN2021108086}. 
+
+%----------- section ----------->
+\section{Materials and Methods}
+
+\subsection{Software and tools}
+A general scheme summarising the approach in this study is visualised in Figure \ref{fig04}. The data include topographic DEM, geologic layers and remote sensing data processed with GRASS GIS, GMT and QGIS.
+
+\begin{figure}[H]
+\centering
+	\hspace{130pt}\includegraphics[width=14.0 cm]{Fig_04}
+\caption{Methodological flowchart scheme. Software: R. Graph source: author.
+\label{fig04}}
+\end{figure}
+
+Remote sensing data organisation and management were performed using \hl{the }GRASS GIS \hl{software}. It presents a multi-functional GIS as well as workspace and editing system for remote sensing and cartographic data storage and processing \cite{NETELER2012124}. \hl{Its} effective functionality\hl{ }enables to perform various steps of image processing and \hl{spatial} data \hl{processing}: storage and organising, navigating and visual\hl{ }inspection, projecting, formatting and converting, image analysis, handling metadata adding annotations on maps\hl{, }visualising and analysing diverse features related to Earth observation data, and \hl{mapping}. Other advantages include \hl{ }open source \hl{availability}, and double mode functionality: using \hl{either }scripts or Graphical User Interface (GUI). Moreover, GRASS GIS enables to operate with large datasets \hl{in vector and raster formats}. Here, each folder of Landsat image contained 800-900 MB, which resulted in processing of 9 Gb for nine satellite images, effectively processed by the GRASS GIS. 
+%----------- subsection ----------->
+\subsection{Data collection}
+
+The full dataset included in the framework is available at the United States Geological Survey (USGS), Figure \ref{fig05}. The Landsat images from 8 and 9 OLI/TIRS sensors were downloaded from the \hl{EarthExplorer repository} \href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}. The EarthExplorer\hl{ aims} at Earth observation data collecting for multi-scale monitoring of Earth-related processes using remote sensing data. \hl{It} is supported by the USGS which coordinates and promotes\hl{ }storage\hl{ }of the datasets in digital format for queries. It enables downloading the satellite images and \hl{provides }cartographic information \hl{for data. Besides the Landsat,} it also supports other remote sensing products such as radar data, aerial imagery, Digital Elevation Models (DEM), Advanced Very High Resolution Radiometer (AVHRR),\hl{ etc}.  
+
+The images cover nine years from 2015 to 2023, Figure \ref{fig05}. The choice of image data\hl{ }is explained by the two criteria: 1) cloudiness of the image is below 10\% for all the scenes; 2) the images are captured in the\hl{ }dry\hl{ }period to objectively assess the post-flood scenario. The\hl{ }wet\hl{ }period of Sudd region accompanied with heavy rainfalls lasts during \hl{the }summer period. The exact period differs significantly by years and according to various information sources may last between April and September \cite{MartinBurgess} or from March to October, according to Climate Change Knowledge Portal. The\hl{ }greatest concentration of rainfalls in Sudd \hl{are recorded} between June and September \cite{Climatic}. Therefore, all the images were taken during the dry period to avoid the months from June to September. Since flooding and seasonal dynamics varies yearly, each scene was inspected to evaluated the quality and distinguished contours of \hl{the }diverse land cover types. \hl{Each} Landsat OLI/TIRS \hl{image} included eleven spectral bands in visual, panchromatic and near-infrared channels. 
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_05a.jpg}
+		\caption{2015}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05b.jpg}
+		\caption{2016}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05c.jpg}
+		\caption{2017}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_05d.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05e.jpg}
+		\caption{2019}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05f.jpg}
+		\caption{2020}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_05g.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05h.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_05i.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Sudd wetlands on the Landsat images in natural colours for 8 recent years (2015-2023).}\label{fig05}
+\end{figure}
+
+Besides the satellite Landsat images, this study also included auxiliary data such as topographic data (GEBCO/SRTM grid)\hl{, }geologic USGS data and descriptive information from textual sources regarding the social and economic activities in Sudd region, statistical and descriptive environmental reports on South Sudan available online), which were used for \hl{environmental }analysis.
+
+\subsection{Data preprocessing}
+The overview topographic map of the study area shown in Figure \ref{fig01} was mapped using the Generic Mapping Tools (GMT) software version 6.1.1. \cite{Wessel}. The applied GMT scripting technique was derived from the existing works \cite{Lemenkova202203,data7060074}. The geological maps were plotted using QGIS. The remaining workflow was performed using the GRASS GIS using diverse modules, following existing similar works using GRASS GIS in environmental applications \cite{HOFIERKA201720,JASIEWICZ20111162,JASIEWICZ20111525,SOROKINE2007685}. A folder with the uploaded Landsat imagery\hl{ }was stored in the 'Location/Mapset' working \hl{directory} of the GRASS GIS with relevant sub-directories. Here all the map layers were located and hierarchy supported for imported satellite images following the standard GRASS GIS workflow \cite{NETELER2012124}. The codes were written using the Xcode and run from the GRASS GIS console. The files were imported in TIFF format using Listing \ref{lst01} and stored in the WGS84 coordinate system. 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for importing data for the Landsat OLI/TIRS bands,style=mystyle,label={lst01}]
+r.import input=/Users/polinalemenkova/grassdata/SSudan/LC09_L2SP_173055_20230514_20230516_02_T1_SR_B1.TIF output=L9_2023_01 resample=bilinear extent=region resolution=region --overwrite
+r.import input=/Users/polinalemenkova/grassdata/SSudan/LC09_L2SP_173055_20230514_20230516_02_T1_SR_B2.TIF output=L9_2023_02 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/SSudan/LC09_L2SP_173055_20230514_20230516_02_T1_SR_B3.TIF output=L9_2023_03 extent=region resolution=region
+# repeated for the rest of bands
+r.import input=/Users/polinalemenkova/grassdata/SSudan/LC09_L2SP_173055_20230514_20230516_02_T1_SR_B7.TIF output=L9_2023_07 extent=region resolution=region
+\end{lstlisting}
+
+The general outline of the data processing include data capture \hl{of} the Landsat \hl{8-9} OLI/TIRS \hl{images}, \hl{data preprocessing}, data conversion,\hl{ }segmentation, classification, validation\hl{, computing the land cover classes by covered area} and mapping\hl{. The workflow aimed at} detecting variations in the wetland areas and identifying the extent of the flooded area in \hl{Sudd marshes} over the nine-year. \hl{For comparison of gradual changes, a} one-year interval \hl{was selected }between each pair of images. To ensure that technical requirements of code quality are met, several tests \hl{were} carried out for\hl{ }Landsat images \hl{on} various years using different parameters of segmentation threshold\hl{. This aimed at analysing }the behaviour of the algorithm for various levels of image fragmentation \hl{using different threshold levels}. The obtained image samples were stored in a separate folder of the GRASS GIS with path to the working folder of the repository.
+
+%----------- subsection ----------->
+
+\subsection{Metadata and extent}
+A dataset of the nine Landsat 8-9 OLI/TIRS images containing TIFF raster files was \hl{analysed for metadata with} parameters\hl{ }summarised in Table \ref{tab01}: 
+
+\begin{table}[H] 
+\begin{threeparttable}
+\centering
+\caption{Metadata for Landsat 8-9 OLI/TIRS images.\label{tab01}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCCCCCCCCCC}
+\toprule
+\textbf{Proj.} & \textbf{Zone} & \textbf{Dat.} & \textbf{Ellips.} & \textbf{N} & \textbf{S} & \textbf{W} & \textbf{E} & \textbf{nsres} & \textbf{ewres} & \textbf{rows} & \textbf{cols} & \textbf{cells} \\
+\midrule
+UTM & 36 & WGS84 & WGS84 & 915615 & 682785 & 190785 & 419115 & 30 & 30 & 7761 & 7611 & 59068971\\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}
+      \small
+      	\item \emph{Abbreviations in Table 1:}  Proj -- Projection; Dat. -- Datum; Ellips -- Ellipsoid; N -- North; S -- South; W -- West; E -- East; nsres -- resolution in North-South direction; ewres -- resolution in East-West direction; cols -- columns.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+Visual bands of the original Landsat images (channels 1 to 7) were \hl{uploaded} in TIFF format, processed and converted into several segments. The region extent and groups of the bands were defined on the Landsat images using the parameters in\hl{ }scene by\hl{ the }snippet of code presented in Listing \ref{lst02}. The region borders for the Landsat scenes covering Sudd area\hl{ }are as follows: north: n=915615; south: s=683085; west: w=185985; east: e=414315.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for creating semantic labels for the Landsat OLI/TIRS,style=mystyle,label={lst02}]
+# listing the available raster bands in GRASS GIS mapset
+g.list rast
+# obtaining information on raster metadata:
+r.info -r L9_2023_07
+# grouping data by i.group and set up a computational region to match the scene
+g.region raster=L9_2023_01 -p
+# store VIZ, NIR, MIR into group/subgroup and leaving out TIR as redundant
+i.group group=L9_2023 subgroup=res_30m \
+  input=L9_2023_01,L9_2023_02,L9_2023_03,L9_2023_04,L9_2023_05,L9_2023_06,L9_2023_07
+# Set the region test area with the resolution taken from the input Landsat bands
+g.region -p raster=L9_2023_01
+\end{lstlisting}
+
+\subsection{Defining segments}
+The approach of the GRASS GIS to image segmentation \hl{is based on} the use of module 'i.segment'\hl{. The algorithm} groups similar pixels on the satellite image into unique segments. Thresholding \hl{algorithm assigns} pixels on the image based on the similarity between two neighbour segments, and \hl{detects} the segments\hl{. This enables to detected} flooded area \hl{and} automatically recognise changes in the landscapes. The segmentation was performed \hl{with} 90\% of threshold and minsize=5, the\hl{ }process was converged in 41 iterations\hl{. The process was completed in} 50 minutes for Landsat satellite image for 2023\hl{. }The region IDs were\hl{ }assigned to all the regions including the remaining single-cell regions. Overall, 8464 segments were created for one Landsat image (2023). 
+
+\hl{Afterwards, }the minimal size was changed to 100 \hl{to check the effects from the modified parameters on the results of the segmentation process}. For modified parameters, the seeds were used to optimise the procedure and to provide the \hl{basis information} for image classification. These included random segments \hl{which were }selected automatically\hl{ using} previous segmentation round, and used to start the segmentation process anew using the code shown in Listing \ref{lst03}:
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for segmentation for image tested with 2 levels of threshold,style=mystyle,label={lst03}]
+# Threshold tested with values between > 0 and < 1
+i.segment group=L9_2023 output=segs_L9 threshold=0.90 similarity=euclidean method=region_growing
+minsize=100 --overwrite
+i.segment group=L9_2023 output=segs_L9_2 threshold=0.05 similarity=euclidean method=region_growing
+seeds=segs_L9 minsize=100 iterations=10
+\end{lstlisting} 
+
+\subsection{Threshold algorithm}
+The threshold algorithm searches for the bounds of each segment on the image and plots the image generated using threshold parameters according to the similarity level below the input threshold for a coarse analysis. The \hl{rise} of \hl{ }threshold level increases the fragmentation of the segments, accordingly, see Figure \ref{fig06}. In turn, if the similarity distance is smaller, the pixels are assigned to other neighbour segment. Afterwards, the algorithm sets a start-end position and the process is repeated iteratively until no more merges are possible for the segments of landscape patches during a complete pass of image segmentation. The segmented image is then visualised using the code in Listing \ref{lst04} and saved in as standard TIFF output format in full resolution mode using GRASS GIS. The information on Landsat scene is retrieved from the file and the segments are visible in the visualised image.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for mapping the segmented raster image Landsat 9 OLI/TIRS,style=mystyle,label={lst04}]
+d.mon wx0
+g.region raster=segs_L9 -p
+r.colors segs_L9 color=roygbiv -e
+d.rast segs_L9
+d.legend raster=segs_L9 title="2023" title_fontsize=12 font="Helvetica" fontsize=10 bgcolor=white border_color=white
+d.out.file output=segs_L9 format=jpg --overwrite
+\end{lstlisting}
+
+\begin{figure}[H]
+\hspace{10pt}\makebox[1.00\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_06a}
+		\caption{\centering{2023, segmentation threshold=0.90}}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+			\includegraphics[width=7.3cm]{Fig_06b}
+		\caption{\centering{2023, segmentation threshold=0.05}}
+	\end{subfigure}%
+}
+\caption{Segmentation the Landsat 8-9 OLI/TIRS image of the Sudd area for 2023: (\textbf{a}) Segmentation parameters include minsize=5 and threshold=0.90, (\textbf{b}) minsize=100 and threshold=0.05 and included seeds from the previous segmentation.}\label{fig06}
+\end{figure}
+
+\subsection{Image Segmentation}
+\hl{The} images resulted from the segmentation at the two levels of threshold are showed in Figure \ref{fig06}. The code for processing the image with script is based on defining the objects through \hl{image} segmentation that contains patches of regions with similar parameters of the pixels located inside. Here the similarity between \hl{the }current segment and each of its neighbours is computed using a \hl{search} algorithm \hl{which includes }the given distance formula for \hl{a} target segment. The processing of these segments is possible at both high and low threshold modes and defined similarity parameters. It displays \hl{merged }segments\hl{ }if they meet\hl{ }technical criteria and analyses the coverage of the valid segments using the algorithm function on an image. Then it computes the position for each pair of the segments which shows the best mutual similarity in a target region of the image using iteration for each next region. 
+
+Accordingly, the search for the closest segment is based on a similarity between the segments and objects. In such a way, the algorithm propagated along the image searching for every consecutive object iteratively, to determine which objects are merged. The values of the smaller distance between the objects were evaluated to indicate a closer match within each iteration on the image. Thus, a similarity score of zero is assigned for identical pixels which are assigned to an identical segment. In case of the lower threshold of segments on the images, the similarity between the two segments is lower than a given threshold value. In such \hl{case}, \hl{the combination} of these region is done using the\hl{ }minimal size parameter\hl{. According to this principle,} all the segments with \hl{lesser number of} pixels are merged with their similar neighbour. Such approach enables to optimise the segments through the distribution of the array of pixels into the segments.
+
+\subsection{Parameter estimation}
+
+Estimation of segmentation parameters was based on the tested variants of \hl{the }threshold value of the segments in a relative number which is always between 0.0 and 1.0. Changed degree of segment fragmentation is visible in\hl{ }trial cases (Figure \ref{fig05}). Tested segment size with a thickness is varying from threshold=0.90 to threshold=0.05, and a seed minimal size is defined at 100 pixels. The repetitive iterations described above divided the image into several segments indicating land cover classes. The resolution of 30 pixels for the Landsat image is used as the optimal parameter for a given landscape \hl{patch} allowing to indicate small segments on \hl{an} image. A lower threshold allows only large groups of vegetation to be merged using valued pixels with similar spectral reflectance values. In contrast, a higher threshold (close to one) allows neighbouring land cover classes to be merged. Thus, threshold level of image segmentation is scaled to the actual data range\hl{.}
+
+To reduce the noise effect and to optimise data processing, a minimal size greater than \hl{one} was added as an additional step of image processing. During this step, the threshold of segmentation is ignored\hl{ }to avoid too fragmented images\hl{. }Thus, for segments smaller then the defined size, this parameter merges tiny patches with their most appropriate neighbours. In such a way, the original Landsat \hl{scenes} were generalised by \hl{the }experimental defining of\hl{ }threshold of \hl{the }pixels in a region of interest using \hl{a }partition of the complete image \hl{according to the} values of pixels' colour and intensity. The process of thresholding was based on the analysis and separating the pixels compared against the value of the minimum segment size. It aims to \hl{discriminate} the meaningful part on the image containing landscape patches from the noise pixels.
+
+\subsection{Clustering}
+
+\hl{The performance of the} segmentation\hl{ }was \hl{a} slow \hl{process }and required further post-processing for identification of \hl{the }land cover classes within Sudd area. To address this,\hl{ }a three-step process \hl{was implemented}: first,\hl{ }the segmentation \hl{was executed }as discussed in previous subsection. This produces segments that include identity grid pixels in which we expect to landscape patches\hl{. The }grid cells \hl{were then generalised }and \hl{the} classification process \hl{was performed }using 'i.maxlik' module\hl{ }which \hl{uses} the maximum-likelihood discriminant analysis classifier. Third, the accuracy assessment is performed using GRASS GIS module 'r.kappa' which computes error matrices and kappa parameters for accuracy assessment of classification for each Landsat scene. The code for the maximum-likelihood classification is presented in Listing \ref{lst05}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for classification of the Sudd region based on the segmented raster image Landsat 9 OLI/TIRS,style=mystyle,label={lst05}]
+# Importing bands, here for Band 1, repeated for all the Landsat bands likewise
+r.import input=/Users/polinalemenkova/grassdata/SSudan/LC08_L2SP_173055_20150108_20200910_02_T1_SR_B1.TIF output=L8_2015_01 resample=bilinear extent=region resolution=region --overwrite
+# check up the imported files
+g.list rast
+# Defining computational region to match the scene's extent
+g.region raster=L8_2015_01 -p
+# creating groups from the VIZ, NIR, MIR Bands into groups/subgroups:
+i.group group=L8_2015 subgroup=res_30m \
+  input=L8_2015_01,L8_2015_02,L8_2015_03,L8_2015_04,L8_2015_05,L8_2015_06,L8_2015_07
+ # Clustering by k-means algorithm and generating signature file and clustering report (presented in Appendix B)
+i.cluster group=L8_2015 subgroup=res_30m \
+  signaturefile=cluster_L8_2015 \
+  classes=10 reportfile=rep_clust_L8_2015.txt --overwrite
+  # Running classification
+i.maxlik group=L8_2015 subgroup=res_30m signaturefile=cluster_L8_2015 \
+  output=L8_2015_cluster_classes reject=L8_2015_cluster_reject
+\end{lstlisting}
+
+Clustering algorithm approach\hl{ }by\hl{ }'i.cluster' module\hl{ }is a powerful tool for image partition\hl{ }prior to classification. It operates on image using \hl{the }defined parameters such as initial number of clusters, minimum distance between them,\hl{ }coherence between loops, and\hl{ }minimum area for each cluster. The robustness of clustering is tuned by the correspondence between \hl{the }iterations, and the defined maximum number of loops. The initial cluster means for each band are defined by\hl{ }values of the first cluster as a band mean corrected for standard deviation, and all other clusters distributed equally between the first and the last clusters as implemented in GRASS GIS. 
+
+The flexibility of clustering is that all clusters less than the defined minimum are merged smoothly which outperforms similar algorithms of image partition\hl{. Hence, }the clusters are regrouped accordingly in the iterative way. \hl{Here }each pixel is assigned according to the closest distance to a given cluster using the algorithm of the Euclidean distance, and the results are saved in \hl{a} signature file which is then used for classification by the 'i.maxlik' module of GRASS GIS. The report of clustering is generated automatically for image with example presented in Appendix \ref{AppB}. Thus, clustering presents the advanced object based detection method which creates signatures for next step of image classification which computes the distance between the pixels using similarity method.
+
+\subsection{Classification}
+Afterwards, the maximum-likelihood discriminant analysis classifies the generated clusters, segments and covariance matrices, computed previously. These are used to define \hl{categories} of each \hl{evaluated} cell\hl{. }Hence, the pixels are assigned to the categories of the land cover classes according to the calculated highest probability of belonging to the given class on the image \hl{based on} their spectral reflectance. \hl{The} assignment of pixels into classes of land cover types is based on the signature file ("signaturefile") which contains the cluster and covariance matrices calculated by the module 'i.cluster' and shown in Listing \ref{lst05}. \hl{In such a way, the} maximum-likelihood classifier partitions the total number of pixels on the whole Landsat scene using the segmentation and clustering results as a preprocessing steps for image classification that sequentially examine all current segments in the raster map. 
+
+The pixels were grouped into segments representing land cover types as separate segment objects, and the map is generated for each Landsat image from 2015 to 2023 using maximum-likelihood discriminant analysis approach of classification. The description is created for the segments of each land cover type of Sudd in relevant images. The segments of land cover classes which have \hl{a} sharp transient from neighbouring \hl{class }are considered as another \hl{category}. Afterwards, valid segments in connected landscapes are regrouped using the trial tests for various threshold parameters. The segments from the Sudd landscapes are combined into maps and compared for various years from 2015 to 2023. The distinct classes are detected using the GRASS GIS algorithms iteratively for each segment using image analysis.
+
+\subsection{Calculating the NDVI}
+
+\hl{To evaluate the distribution of healthy vegetayion over the study area in the post-flood scenario, the NDVI was computed using script in Listing} \ref{lst06}. \hl{For atmospheric corrections, the values of the Digital Numer (DN) of the pixel were converted to reflectance values using DOS1 to avoid hazy background. This conversion is done using the metadata file which is included in the data set with 'i.landsat.toar' and information about the sun elevation for each scene. Using the 'i.landsat.toar' module, the top-of-atmosphere radiance and temperature were corrected for Landsat OLI sensor. Afterwards, the NDVI was computed using the existing combination of Red and NIR bands of the image, and the images were visualised using script presented in Listing} \ref{lst06}. 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for computing the NDVI for assessment of vegetation coverage over Sudd (example for 2015),style=mystyle,label={lst06}]
+i.landsat.toar input=lsat8_2015. output=lsat8_2015_toar. sensor=oli8 \
+    method=dos1 date=2015-01-08 sun_elevation=50.07334117 \
+    product_date=2015-01-08 gain=HHHLHLHHL
+# Calculation of NDVI
+g.region raster=lsat8_2015_toar.4 -p
+i.vi red=lsat8_2015_toar.4 nir=lsat8_2015_toar.5 viname=ndvi \
+       output=lsat8_2015.ndvi --overwrite
+r.colors lsat8_2015.ndvi color=ndvi
+# displaying the map
+d.mon wx0
+g.region raster=lsat8_2015_toar.4 -p
+d.rast lsat8_2015.ndvi
+d.legend raster=lsat8_2015.ndvi range=-1,1 title="NDVI" title_fontsize=14 font=Helvetica fontsize=12 -t -s -b border_color=white thin=12 label_step=0.1 -d
+d.out.file output=SSudan_NDVI_2015 format=jpg --overwrite
+\end{lstlisting}
+
+\subsection{Accuracy assessment}
+
+The accuracy assessment was performed in two ways\hl{. }First, the error matrix and kappa parameters were computed by 'r.kappa' module of GRASX GIS. Second, the rejection probability classes were calculated to estimate the pixel classified according to confidence levels based on the classification of the satellite images. This was implemented using the 'i.maxlik' module \hl{and resulted in plotted maps showing} the reject threshold results, as shown above in Listing \ref{lst05}. The confusion matrix was estimated by kappa with computed possible misclassification cases and derived kappa index of agreement. This was performed using the code in Listing \ref{lst07}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for computing the error matrix and kappa parameters for accuracy assessment of Landsat classification,style=mystyle,label={lst07}]
+# r.kappa - Calculates error matrix and kappa parameter for accuracy assessment of classification result.
+g.region raster=L8_2015_cluster_classes -p
+r.kappa -w classification=L8_2015_cluster_classes reference=training_classes_Sudd
+# export Kappa matrix as CSV file "kappa.csv"
+r.kappa classification=L8_2015_cluster_classes reference=training_classes_Sudd output=kappa.csv -m -h --overwrite
+\end{lstlisting}
+
+Image processing by GRASS GIS also included \hl{the }removal of the noise signals from the images through \hl{the }adjusted segmentation threshold, image partitioning into segments for monitoring inundated areas and classification. The results of kappa calculation are presented as confusion matrices in \hl{a }tabular format (kappa.csv). These tables were computed for each classified Landsat image and \hl{presented} the calculation results reporting \hl{data} for every category of land cover classes, as summarised in the Appendix \ref{AppA}. 
+
+%----------- section ----------->
+\section{Results}
+
+\subsection{Remote sensing data analysis}
+The algorithms of the GRASS GIS described above and summarised in scripts were applied to process the \hl{Landsat }satellite images with the results of the segmentation shown in Figure \ref{fig06}. The\hl{ }scenes were segmented for each year \hl{with the} visualised maps\hl{. }The\hl{ 30}-resolution remote sensing imagery\hl{ }corresponds to the following land cover types in Sudd region \cite{FAO2023}: 1) Cropland; 2) Herbaceous coverage; 3) Forest; 4) Mosaic tree canopies; 5) Shrubland; 6) Grassland; 7) Flooded and inundated areas; 8) Bare areas; 9) Built-up areas; 10) Water areas. These land cover types were used for landscape analysis\hl{.}
+
+\subsection{Detection of segmented areas}
+
+\hl{The results of Landsat 8-9 OLI/TIRS image segmentation are presented in Figure }\ref{fig07}. \hl{The computed areas by land cover classes and their changes by years are summarised in Table} \ref{tab02} \hl{where the land cover classes are as follows: Class 1) Cropland; Class 2) Herbaceous coverage; Class 3) Forest; Class 4) Mosaic tree canopies; Class 5) Shrubland; Class 6) Grassland; Class 7) Flooded and inundated areas; Class 8) Bare areas; Class 9) Built-up areas; Class 10) Water areas.}
+
+\begin{table}[H]
+%\begin{threeparttable}
+%\centering
+    \caption{\hl{Computed areas of land cover classes derived from the classified Landsat 8-9 OLI/TIRS images for the region of Sudd, South Sudan in the period of 2015 to 2023}.\label{tab02}}
+ \begin{adjustwidth}{-\extralength}{-0.5cm}
+	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        \textbf{Year} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} \\ \midrule
+        2015 & 1501537.8 & 243574.1 & 317231.5 & 17077.0 & 241763.7 & 734523.3 & 447070.3 & 528704.9 & 466546.4 & 281024.0 \\ \hline
+        2016 & 606130.3 & 594056.0 & 251200.3 & 478775.3 & 108958.6 & 202940.2 & 558836.7 & 132573.3 & 471370.5 & 386764.2 \\ \hline
+        2017 & 344062 & 395409.0 & 458500.0 & 458986.4 & 526807.8 & 540912.0 & 761353.5 & 468330.1 & 664728.9 & 873149.5 \\ \hline
+        2018 & 427690.5 & 1054373.0 & 1083009.3 & 881093.1 & 881190.4 & 705596.0 & 526685.1 & 315125.8 & 1128926.5 & 495258.0 \\ \hline
+        2019 & 376759.4 & 332136.8 & 251513.7 & 982144.2 & 124956.3 & 757819.1 & 1090100.0 & 625188.6 & 109114.2 & 689025.5 \\ \hline
+        2020 & 272113.4 & 180816.8 & 419207.8 & 402059.3 & 493457.7 & 1156585.4 & 937007.5 & 584898.4 & 1567576.9 & 752311.4 \\ \hline
+        2021 & 416413.7 & 234023.4 & 189669.0 & 414165.1 & 490691.7 & 578060.7 & 118864.8 & 467398.9 & 283889.0 & 355065.7 \\ \hline
+        2022 & 307658.6 & 1168006.6 & 147964.0 & 423542.0 & 617279.5 & 442903.9 & 383683.5 & 788245.4 & 770970.0 & 267592.8 \\ \hline
+        2023 & 0.0 & 29203.0 & 1599665.7 & 434129.5 & 1012475.1 & 1032878.3 & 934255.0 & 1214757.6 & 167164.5 & 687965.9 \\ \hline
+	\bottomrule
+	\end{tabularx}
+	\end{adjustwidth}
+%	\begin{tablenotes}
+  %    \small
+ %     	\item \emph{Notations for Classes in Table 1:}  
+%    \end{tablenotes}
+%  \end{threeparttable}
+\end{table}
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_07a.jpg}
+		\caption{2015}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07b.jpg}
+		\caption{2016}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07c.jpg}
+		\caption{2017}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_07d.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07e.jpg}
+		\caption{2019}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07f.jpg}
+		\caption{2020}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07g.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07h.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_07i.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Segmentation maps of the satellite images of Sudd wetlands, South Sudan, based on the time series of the Landsat 8-9 OLI/TIRS images (2015-2023).}\label{fig07}
+\end{figure}
+
+A multi-scale time series analysis demonstrated changes in flooded areas of the Sudd region, revealed in maps of gradual changes of the landscapes which are visible on the segmented Landsat images taken yearly from 2015 to 2023. For the Landsat 8-9 OLI/TIRS scenes, the results of the image segmentation performed using the identical parameters defined for all the images are summarised in Table \ref{tab03}. Here, the number of iterations (passes) depends on the level of fragmentation of the image and varies by years.\hl{ }Segmentation and processing of the Landsat 8-9 OLI/TIRS datasets \hl{by GRASS GIS}\hl{ }served for detecting flooded areas and monitoring\hl{ }the inundated areas \hl{in Sudd marshes}. Detected large seasonal changes in\hl{ }wetlands result from variation in \hl{the }flow of Nile tributaries and Victoria Lake as well as climate-hydrological pulsing. The approach is based on the analysis of landscape patches, grouping segments on the images and hierarchical clustering (sub-groups of landscapes using various threshold levels) for classification following image segmentation, Figure \ref{fig07}.
+
+\begin{table}[H] 
+\begin{threeparttable}
+\centering
+\caption{Results of the segmentation procedure for Landsat 8-9 images with No of created segments.\label{tab03}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{p{2.5cm}p{6.8cm}p{1.7cm}p{2.5cm}}
+\toprule
+\textbf{Year} & \textbf{Scene ID} & \textbf{Iterations} & \textbf{Segments} \\
+\midrule
+8 January 2015 & $LC08\_L1TP\_173055\_20150108\_20200910\_02\_T1$ & 37 & 4515  \\
+12 February 2016 & $LC08\_L1TP\_173055\_20160212\_20200907\_02\_T1$ & 37 & 4813  \\
+31 December 2017 & $LC08\_L1TP\_173055\_20171231\_20200902\_02\_T1$ & 38 & 4114  \\
+1 February 2018 & $LC08\_L1TP\_173055\_20180201\_20200902\_02\_T1$ & 36 & 5090  \\
+8 March 2019 & $LC08\_L1TP\_173055\_20190308\_20200829\_02\_T1$ & 34 & 6021  \\
+26 March 2020 & $LC08\_L1TP\_173055\_20200326\_20200822\_02\_T1$ & 39 & 3187  \\
+29 March 2021 & $LC08\_L1TP\_173055\_20210329\_20210408\_02\_T1$ & 35 & 2445  \\
+19 January 2022 & $LC09\_L1TP\_173055\_20220119\_20230501\_02\_T1$ & 35 & 4413  \\
+14 May 2023 & $LC09\_L1TP\_173055\_20230514\_20230514\_02\_T1$ & 41 & 5181  \\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}
+      \small
+      	\item \emph{Notation for Table 2:} The Landsat images were selected with cloudiness below 10\% to achieve maximal distinguishability of the contours on the images.
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+Detecting and recognising the segments on the Landsat images implies identifying the fields of regions which correspond to the major 10 land cover types in Sudd wetlands of \hl{South} Sudan. These regions are grouped into the semantic categories (landscape patches and land cover types types). The hierarchical level of the geometric objects with regard to their scale (small-, middle- and large-size) was applied and the threshold was optimised. The \hl{detection of }segments on the images \hl{was }based on \hl{the }mean shift image segmentation including filtering and clustering, Figure \ref{fig07}. Since both \hl{algorithms} are embedded in \hl{i.segment module}, the\hl{ }images were segmented without \hl{the} priori landscape-dependent information \hl{which ensured independent} interpretation.  
+
+The decision on\hl{ }grouping is made using features of these pixels that match\hl{ }target classes ('segment'/'not segment')\hl{: }colour, distance to the threshold in pixels \hl{and} spectral reflectance of the pixel. The shape of the segment is defined through the boundary constraints which limits the adjacency of pixels and segments on a satellite image. In such a way, the image is represented as a vector geometric structure, recognised and identified by\hl{ }computer vision \hl{approach}. The assessment is based on the connectivity of pixels constituting the segment, expect for the threshold fitness and the difference between several segments which \hl{breaks} the image scene into a mosaic of patches.
+
+\subsection{Spatio-temporal analysis}
+
+Defining the segments on image series enabled to detect inundated areas after flood disasters and compare changes in complex channel and lagoon system within the area of Sudd marshes, Figure \ref{fig08}. \hl{The} areas covered by water are distinct from the neighbour regions and only included pixels with correspondent spectral reflectance for water which shows a contrast between the red and near-infrared (NIR) areas. The segments show the location of the Bahr al Jabal flow and its floodplain with distributed small tributaries separated based on \hl{the }values of pixels which are different from the forest land cover types or those covered by \hl{agricultural }vegetation. The consequences of the flood events are visible on the corresponding image scenes by the analysis of land cover changes. \hl{Thus}, changed pattern of the post-flood landscapes as a consequence of severe floods in July 2014 triggered by seasonal rainfalls is visible on the image in Figure \ref{fig08} (a). Social consequences of such disasters include worsen living conditions and displacement of 68\% of 1.3 M people \cite{ReliefWeb2014}.  
+
+Winter months after the annual flood peak are characterised by the saturated soils with the highest moisture level which \hl{cannot retain} additional water due to the \hl{reached} saturation level. Therefore, even minimal rainfall triggers further catastrophic flooding and results in chained consequences. Thus, occasional rainfalls contribute to the high level of inundated lands, Figure \ref{fig08} (b), (c) and (d). Flash floods and heavy rains between June and November 2018 affected over 142,000 people with damaged households and livelihoods \cite{ReliefWeb2018}. The consequences of these disasters with flooded grassland ecosystems and inundated areas (bright green areas)\hl{ }are visible \hl{on the} image \hl{taken in }early 2019, Figure \ref{fig08} (e). Abnormally heavy seasonal \hl{flooding} in South Sudan \hl{in }July 2019\hl{ }devastated large areas of Sudd and surrounding areas of \hl{the }White Nile tributaries, swamps and lakes \cite{OCHA2019}. The post-flood image in early 2020 shows\hl{ }inundated areas and landscapes, Figure \ref{fig08} (f).
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_08a.jpg}
+		\caption{2015}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08b.jpg}
+		\caption{2016}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08c.jpg}
+		\caption{2017}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_08d.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08e.jpg}
+		\caption{2019}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08f.jpg}
+		\caption{2020}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_08g.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08h.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_08i.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Classification maps of the satellite images of Sudd wetlands, South Sudan, based on the time series of the Landsat 8-9 OLI/TIRS images (2015-2023). \hl{The classification shows the categories of land cover classes based on the maximum likelihood algorithm using GRASS GIS.}}\label{fig08}
+\end{figure}
+
+The increased area of \hl{the flooded} areas (bright green areas, Figure \ref{fig08}, (g)) resulted from the worst floods in Sudan in August 2020 was reported by the United Nations Office for the Coordination of Humanitarian Affairs (UN OCHA) \cite{OCHA2020}\hl{. Social consequences of such events results in around} 600,000 people affected by disaster along the\hl{ }White Nile since July 2020 and widespread flooding continued in until \hl{autumn} 2020. The largest affected state is Ayod with 150.000 affected and displaced people due to the flood effects. The consequences affected land cover changes are reflected in \hl{a} post-flood image of March 2021, Figure \ref{fig08} (g). 
+
+\hl{The NDVI maps for a time series of the images show the distribution of vegetation in the post-flooded scenario, Figure} \ref{fig09}. The floods in August 2021 represent the disaster\hl{ }in Sudd \hl{due to the} heavy showers in south-western South Sudan and resulted in floods and river overflow. The flooding in 2021 was particularly dire in\hl{ }central regions of the country along the Upper Nile region including \hl{the }Jonglei state where Sudd area is extended \cite{SouthSudan2021}. 
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_09a.jpg}
+		\caption{2015}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09b.jpg}
+		\caption{2016}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09c.jpg}
+		\caption{2017}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_09d.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09e.jpg}
+		\caption{2019}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09f.jpg}
+		\caption{2020}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_09g.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09h.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_09i.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{\hl{Normalized difference vegetation index (NDVI) computed based on the satellite images of Sudd wetlands, South Sudan: Landsat 8-9 OLI/TIRS images (2015-2023).}}\label{fig09}
+\end{figure}
+
+Social consequences of \hl{floods} for local population are reported \hl{accordingly} \cite{ReliefWeb}. It is also noted by World Health Organization (WHO) \cite{WHO2023} that severe \hl{floods} in July 2022\hl{ }resulted in evacuations and damage of \hl{one} million people and 7 380 people displaced \hl{in South Sudan. Consequences for infrastructure}include blocked routes by increased flood waters which \hl{disabled} humanitarian actions. The southern part of the \hl{country} including Bentiu and Jonglei State \hl{were} the most affected. The increased inundated areas as a post-flood consequences in 2023 are visible as bright green coloured \hl{areas}, Figure \ref{fig09} (i).
+
+
+To evaluate the rejection probability classes, maps of pixel classified according to confidence levels were made based on the classification of nine satellite images, Figure \ref{fig10}. 
+
+\begin{figure}[H]
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_10a.jpg}
+		\caption{2015}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10b.jpg}
+		\caption{2016}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10c.jpg}
+		\caption{2017}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_10d.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10e.jpg}
+		\caption{2019}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10f.jpg}
+		\caption{2020}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\hspace{50pt}\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.87\textwidth]{Fig_10g.jpg}
+		\caption{2021}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10h.jpg}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+		\includegraphics[width=0.87\textwidth]{Fig_10i.jpg}
+		\caption{2023}
+	\end{subfigure}%
+}
+\caption{Rejection probability classes with pixel classified according to confidence levels based on the classification of the satellite images of Sudd wetlands, South Sudan: Landsat 8-9 OLI/TIRS images (2015-2023).}\label{fig10}
+\end{figure} 
+
+Spectral information relevant to land cover classes is obtained from the landscape analysis on Sudd area, while the information on flooding detected on each image is retrieved through segmentation. The land cover classes are identified during classification using the distinct colours of segments and constructing the morphological shapes of the represented objects (e.g., the flow of the River Nile) in each of the image. All the pixels encompassed inside each segment are identified iteratively by the machine and interpreted accordingly. The information from landscape patches is used to find the variations by years and propagate inundated areas using comparative analysis. Afterwards, the segments are identified as land cover classes for each segment of the image, and metadata of the segments are updated for each scene, accordingly. 
+
+%----------- section ----------->
+\section{Discussion}
+
+Wetland systems of Sudd are one of the most important ecosystems of South Sudan included in the list of \emph{Ramsar Convention on Wetlands of International Importance Especially as Waterfowl Habitat} due to its hydrological importance in the Nile basin and a high number of the endangered and vulnerable species. Sudd plays a crucial role in regulating the balance of floodwater and accumulating sediments from the Mountain Nile. Moreover, since over half of water is evaporated in Sudd, it serves as an important mechanism of hydrological stability in the Nile River. Therefore, the disturbed flooding system will necessarily affect the Nile basin and involve negative environmental consequences. The decrease in wetland area and changed hydrological regime of marshes can directly and indirectly affect the Nile River basin and thus increase the negative effects from climate change. With this regard, conservation actions focused on Sudd wetlands support regulation of the climate-environmental issues: increase of temperatures, unstable precipitation pattern, unbalanced crop planting, deforestation, carbon emissions related to regional agriculture sector, etc.
+
+Current paper contributed to monitoring Sudd wetlands through image analysis including segmentation and classification with aim to determine landscape changes over the past nine years. The important deliverables of this work include image segmentation and classification to identify the diverse land cover classes for analysis of vegetation and flooded areas based on image analysis techniques. \hl{In contrast to the former reported results} \cite{WILUSZ2017205} \hl{where low resolution SAR imagery was used and processed using ENVISAT software for the period of 2007-2011, this study presented a script-based approach using high-resolution dataset in open access which enables repeatability and continuation of this study. Previous works also reported the increase in peak flood area which ranges considerably from 2007 to 2009 and classifies permanent flooding, seasonal flooding and intermittent flooding areas. Likewise, this study reports the increase in the inundated areas of Sudd for the years 2016, 2018 and 2020. }
+
+\hl{This paper presents an alternative algorithms of scripts-based remote sensing data analysis for environmental modelling. A} multiple methodology approach was applied to various steps of research. Image segmentation, classification\hl{, NDVI calculation, computing land cover classes} and validation \hl{of the results with accuracy assessment }was performed using the GRASS GIS using a time series of the Landsat satellite images, while \hl{the }QGIS was applied for geological mapping, and the topographic map was plotted using GMT. The presented series of maps support the evaluation of the environmental setting in Sudd region, South Sudan. \hl{Thus, based on the satellite computations of flooded area in Sudd, the obtained maps estimated the extent of 10 major land cover classes and flooded areas with notable extent especially in years 2016, 2018 and 2020. Additionally, the maximum flood extent occurs early with  the earlier peak in the flooded extent  of inundated areas which are related to the Sudd hydrodynamics. Thus, the expanded flooding in wetlands of Sudd might caused backwater effects that affected the wetland extent and behavior.} 
+
+\hl{The floods presented in simulated models are also related to the drought periods which is reflected in the periods if minimum flood extent in years 2015, 2019 and 2021. This also supports the findings from previous works on climate-environmental relationships and report the impact of the Sudd wetlands on atmospheric moisture fluxes in South Sudan through evaporation} \cite{Mohamed}. \hl{The presented }geospatial visualization supported sustainable monitoring of Sudd wetlands and mapping\hl{ }of the inundated areas using segmentation and classification as comparative analysis \hl{and NDVI calculation to detected vegetation areas. Furthermore, the} topographic and geologic data \hl{were used }for analysis of geomorphic structures, main geologic units, and provinces \hl{to show the distribution of Quaternary sediments characterised by clayey soils which create perfect conditions for the extent of swamps and wetlands}. 
+
+The demonstrated results based on Landsat 8-9 OLI/TIRS products \hl{which continues existing studies using Landsat products for Sudd area} \cite{Petersenetal2008}. \hl{The images were processed and }tested using GRASS GIS \hl{to}\hl{contribute} to the initiatives on digital environmental monitoring of African wetlands. \hl{In relevant studies} \cite{DIVITTORIO2021100922}, \hl{spatial constraints in flooded areas were exploited using data from MODIS imagery and reported a connectivity between swamps in wetlands of Sudd. }With this regards, this study supports the analysis of changes in flooded areas of Sudd through presenting a cartographic mapping based on the \hl{open source }remote sensing data and advanced techniques of image processing. Landscape analysis included the detection of segments corresponding to the flooded land areas from pixel-based data extraction. Creating a novel series of maps based on the segmentation and classification of the remote sensing data aims at the environmental monitoring of South Sudan and specifically, detecting the inundated areas of Sudd wetlands. It is furthermore intended to present a novel information accessible to the ecologists and environmental modellers as information source for conservation actions, detecting vulnerable regions prone to inundation during flood periods with links to the ecology in Sudd wetlands. 
+
+The study aimed at monitoring flooded areas of Sudd and affected land cover types for analysis of the climate-environmental effects on sustainability of wetlands. \hl{To this end, a series of numerical experiments and cartographic data processing using remote sensing data was performed to evaluate the changes of the Sudd wetlands with regard to the Nile environmental setting in South Sudan. }The detected variation in segments by years indicated difference in peaks of flooding which were visualised using processing Landsat 8-9 OLI/TIRS images. The fluctuated flooded areas of Sudd wetlands in South Sudan (dry land or filled by water) were recognised during the period of 9 years. The recognition of the of the pixels was based according to the discrimination of spectral reflectance properties based on threshold criteria which is the essential part of the segmentation algorithm. Thus, pixels were assigned to segments on the images distinct from the others, which identified land cover classes of Sudd wetlands: sand, marsh, flooded areas, bare land etc.
+
+From the cartographic \hl{perspective}, the demonstrated application and functionality of the GRASS GIS also contributes to the continuation of the environmental research focused on Sudd ecosystems due to open source availability of the used tools. Thus, the GRASS GIS software was used for processing the remote sensing data and image analysis which can be continued in similar studies using presented scripts. The demonstrated and explained cartographic tasks included the conversion of raster satellite images into the maps of segmented patches and classification of the land cover types. Technically, the algorithms of region growing and merging were employed for discrimination of various land cover classes using unique IDs in segmentation by the 'i.segment' module. A collection of contiguous pixels that meet these criteria are merged and assigned to segments as objects. The classification was based on the 'i.maxlike' module. The input dataset included 9 satellite images in a raster TIFF format obtained from the USGS. The algorithms of the GRASS GIS were discussed in details with provided comments on scripts, and demonstrated the efficiently of this software for processing and segmentation of the satellite images.
+
+%----------- section ----------->
+\section{Conclusions}
+
+Remote sensing data contain essential information regarding the landscapes of the Earth. Accurate classification of the time series of the satellite images enables to detect changes in landscapes using this information derived from the satellite images. Such technique supports environmental modelling of remotely located areas where direct observations are difficult to perform such as Sudd wetlands located in South Sudan. To this end, this paper presents a case of the analysis of changes in flooded areas of Sudd marshes as a representative case of African tropical regions in the Nile river basin. The dataset included the series of satellite Landsat 8-9 OLI/TIRS obtained from the USGS. The detection of the land cover types was performed using the algorithms of image segmentation and classification. The advanced solution of the GRASS GIS for geospatial data processing is demonstrated by programming approach that utilises scripts for data automation. The objects that belong to the same category of segments were defined and characterised as representing land cover classes using the difference in spectral reflectance retrieved from the satellite images. 
+
+This research also develops the links between technical approach of cartographic data processing by GRASS GIS and environmental analysis of Sudd area using image processing. In such a way, it presents the first data-driven approach that can make its own decisions on the variations in the flooded areas of the unique Sudd wetland system in South Sudan. The cartographic interpretation of the vegetation and inundated areas was performed using data collected in a sequence of nine years (from 2015 to 2023) for a retrospective analysis of changes in Sudd marshes. In this respect, the research performed monitoring and mapping of the extent of floods in South Sudan using a comparison of images as a short-term time series of satellite images. The analysis of the remote sensing data and supplementary information supported the detection of the areas prone to flooding. 
+
+Future similar studies may also consider the overlay of the presented maps with additional cartographic materials, and the use of biogeochemical and environmental data as additional information for extended research. The use of additional data for the presented research would enable to extend the environmental analysis and monitoring in further directions. For instance, this study can be continued by using the new Landsat images covering other periods. Since the access to the USGS EarthExplorer repositories with Landsat data are freely available and open, the use of images for various periods can support long-term environmental monitoring of South Sudan. As a continuation of this work, these data can be re-used for recommendations regarding the preventive measures to avoid the risks of flooding using data on wetland boundaries, and inflow and outflow of water affecting vegetation communities in Sudd marshes. Furthermore, the communication and results dissemination to involved parties can assist with decision taking regarding the extent of the inundated areas. This especially concerns fishery communities or farmers depending on the flood periods in Sudd area. 
+
+%----------- section ----------->
+
+\funding{The publication was funded by the Editorial Office of Sustainability, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{GRASS GIS scripts for image segmentation, clustering and classification, clustering results, computed kappa parameters and errors matrices are available in the GitHub repository: \href{https://github.com/paulinelemenkova/Sudd_South_Sudan_Image_Analysis}{https://github.com/paulinelemenkova/Sudd\_South\_Sudan\_Image\_Analysis}} 
+
+\acknowledgments{The authors thank the reviewers for reading and review of this manuscript.}
+
+\conflictsofinterest{The authors declare no conflict of interest.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+AVHRR & Advanced Very High Resolution Radiometer \\
+CNN & Convolutional Neural Networks \\
+DCW & Digital Chart of the World \\
+DEM & Digital Elevation Model \\ 
+FAO UN & Food and Agriculture Organization of the United Nations \\
+GEBCO & General Bathymetric Chart of the Oceans \\ 
+GMT & Generic Mapping Tools \\
+GRASS & Geographic Resources Analysis Support System\\
+GIS & Geographic Information System \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
+\hl{NDVI} & \hl{Normalized Difference Vegetation Index} \\
+TIFF & Tag Image File Format\\
+UN OCHA & United Nations Office for the Coordination of Humanitarian Affairs \\
+USGS & United States Geological Survey\\
+WHO & World Health Organization \\
+\end{tabular}
+}
+
+\appendixtitles{yes} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{Accuracy assessment: calculated error matrices and kappa parameters}\label{AppA}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2015} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        cat\# \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        \midrule
+        Class 1 & \cellcolor{green!10}733990 & 71250 & 51480 & 7839 & 46757 & 700709 & 113227 & 113324 & 9887 & 5118 & 1853581 \\ \hline
+        Class 2 & 26060 & \cellcolor{green!10}6727 & 35538 & 26438 & 364431 & 2554250 & 860056 & 672721 & 31768 & 28371 & 4606360 \\ \hline
+        Class 3 & 126808 & 1031318 & \cellcolor{green!10}265035 & 526075 & 315900 & 19612 & 264441 & 41069 & 252749 & 7260 & 2850267 \\ \hline
+        Class 4 & 49698 & 1019916 & 414261 & \cellcolor{green!10}1502475 & 729561 & 151428 & 544346 & 56599 & 699290 & 36435 & 5204009 \\ \hline
+        Class 5 & 55812 & 124601 & 65706 & 587382 & \cellcolor{green!10}1069099 & 2306196 & 1927058 & 744408 & 55621 & 67236 & 7003119 \\ \hline
+        Class 6 & 52480 & 54546 & 5866 & 311905 & 743280 & \cellcolor{green!10}2588755 & 1866894 & 982650 & 119871 & 76889 & 6803136 \\ \hline
+        Class 7 & 24987 & 458562 & 337404 & 1432717 & 276379 & 72536 & \cellcolor{green!10}202169 & 59283 & 1294871 & 6729 & 4165637 \\ \hline
+        Class 8 & 85044 & 497573 & 2216937 & 118633 & 30004 & 449 & 10108 & \cellcolor{green!10}1598 & 90003 & 1007 & 3051356 \\ \hline
+        Class 9 & 5751 & 10876 & 1737 & 36475 & 89652 & 424421 & 705550 & 1286583 & \cellcolor{green!10}70834 & 17102 & 2648981 \\ \hline
+        Class 10 & 19907 & 13236 & 51275 & 160668 & 121074 & 40570 & 76701 & 87681 & 861525 & \cellcolor{green!10}291 & 1432928 \\ \hline
+        ColSum & 1180537 & 3288605 & 3445239 & 4710607 & 3786137 & 8858926 & 6570550 & 4045916 & 3486419 & 246438 & \cellcolor{green!10}39619374 \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2016} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        cat\# & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}780231 & 220046 & 154297 & 83530 & 30508 & 5503 & 20356 & 2895 & 47941 & 1275 & 1346582 \\ \hline
+        Class 2 & 99741 & \cellcolor{green!10}1580160 & 638455 & 893432 & 63464 & 1502 & 16019 & 1711 & 347409 & 2430 & 3644323 \\ \hline
+        Class 3 & 45287 & 105436 & \cellcolor{green!10}146747 & 352943 & 857966 & 1395889 & 842830 & 283690 & 379210 & 41515 & 4451513 \\ \hline
+        Class 4 & 35525 & 99491 & 19632 & \cellcolor{green!10}174655 & 357086 & 3414838 & 689202 & 854448 & 255453 & 45549 & 5945879 \\ \hline
+        Class 5 & 62103 & 104822 & 101515 & 593389 & \cellcolor{green!10}1081257 & 1214029 & 1864351 & 467083 & 179258 & 81250 & 5749057 \\ \hline
+        Class 6 & 78202 & 734566 & 2116828 & 415473 & 20173 & \cellcolor{green!10}166 & 6818 & 564 & 101522 & 2036 & 3476348 \\ \hline
+        Class 7 & 34081 & 325250 & 183816 & 1522681 & 609621 & 148043 & \cellcolor{green!10}895476 & 76289 & 838978 & 29955 & 4664190 \\ \hline
+        Class 8 & 20087 & 100341 & 47817 & 255331 & 336311 & 2069073 & 1207148 & \cellcolor{green!10}1054234 & 176795 & 22133 & 5289270 \\ \hline
+        Class 9 & 26399 & 62204 & 48815 & 358068 & 358608 & 529045 & 819897 & 518414 & \cellcolor{green!10}845407 & 14161 & 3581018 \\ \hline
+        Class 10 & 4591 & 43312 & 37546 & 143710 & 82955 & 93770 & 258290 & 809648 & 410504 & \cellcolor{green!10}6326 & 1890652 \\ \hline
+        ColSum & 1186247 & 3375628 & 3495468 & 4793212 & 3797949 & 8871858 & 6620387 & 4068976 & 3582477 & 246630 & \cellcolor{green!10}40038832 \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2017} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        cat\# & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}714689 & 117487 & 52980 & 29136 & 14787 & 67746 & 17701 & 9756 & 14785 & 723 & 1039790 \\ \hline
+        Class 2 & 29352 & \cellcolor{green!10}89841 & 42227 & 189497 & 504534 & 2227043 & 827928 & 594172 & 32439 & 44234 & 4581267 \\ \hline
+        Class 3 & 132797 & 1146691 & \cellcolor{green!10}330041 & 822072 & 207013 & 12648 & 202651 & 11771 & 1125908 & 7090 & 3998682 \\ \hline
+        Class 4 & 41460 & 802806 & 164039 & \cellcolor{green!10}1157656 & 1081506 & 581552 & 1024952 & 173449 & 519751 & 25839 & 5573010 \\ \hline
+        Class 5 & 31282 & 101832 & 47418 & 331621 & \cellcolor{green!10}491478 & 1274293 & 1413071 & 693162 & 42470 & 39397 & 4466024 \\ \hline
+        Class 6 & 94598 & 767242 & 1889767 & 803189 & 138593 & \cellcolor{green!10}5507 & 58560 & 6832 & 831596 & 3347 & 4599231 \\ \hline
+        Class 7 & 60993 & 201077 & 890179 & 350265 & 126975 & 21032 & \cellcolor{green!10}61723 & 47984 & 720003 & 432 & 2480663 \\ \hline
+        Class 8 & 56736 & 177652 & 99278 & 980998 & 910525 & 1832830 & 1627262 & \cellcolor{green!10}653205 & 200345 & 67755 & 6606586 \\ \hline
+        Class 9 & 28932 & 33432 & 11456 & 142960 & 309440 & 2717290 & 1130225 & 1143763 & \cellcolor{green!10}76522 & 52290 & 5646310 \\ \hline
+        Class 10 & 4903 & 29081 & 7521 & 51253 & 49527 & 129146 & 315224 & 775406 & 94041 & \cellcolor{green!10}6616 & 1462718 \\ \hline
+        ColSum & 1195742 & 3467141 & 3534906 & 4858647 & 3834378 & 8869087 & 6679297 & 4109500 & 3657860 & 247723 & \cellcolor{green!10}40454281 \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2018} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+         cat\# & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}732406 & 145516 & 55377 & 18756 & 2042 & 567 & 2028 & 265 & 3889 & 540 & 961386 \\ \hline
+        Class 2 & 42867 & \cellcolor{green!10}83461 & 39794 & 120546 & 646654 & 1668545 & 605985 & 381538 & 67729 & 44928 & 3702047 \\ \hline
+        Class 3 & 50806 & 72438 & \cellcolor{green!10}24334 & 192753 & 550591 & 3041550 & 1180439 & 877680 & 45519 & 67934 & 6104044 \\ \hline
+        Class 4 & 39524 & 549507 & 130403 & \cellcolor{green!10}1162081 & 956566 & 163501 & 1005861 & 76938 & 592355 & 40140 & 4716876 \\ \hline
+        Class 5 & 19153 & 74871 & 29427 & 184968 & \cellcolor{green!10}292231 & 1738221 & 1323091 & 903817 & 42208 & 24979 & 4632966 \\ \hline
+        Class 6 & 103865 & 1380744 & 464199 & 991808 & 155944 & \cellcolor{green!10}2218 & 115542 & 2619 & 675785 & 4254 & 3896978 \\ \hline
+        Class 7 & 108450 & 727966 & 2543054 & 684347 & 22111 & 767 & \cellcolor{green!10}13922 & 755 & 586134 & 1725 & 4689231 \\ \hline
+        Class 8 & 40667 & 144063 & 127960 & 1069080 & 804237 & 591309 & 1066923 & \cellcolor{green!10}232496 & 725319 & 28954 & 4831008 \\ \hline
+        Class 9 & 19387 & 60859 & 25457 & 154727 & 238558 & 1584571 & 993358 & 960600 & \cellcolor{green!10}88933 & 25916 & 4152366 \\ \hline
+        Class 10 & 24735 & 80861 & 21160 & 165180 & 115558 & 65516 & 258729 & 595195 & 693860 & \cellcolor{green!10}6799 & 2027593 \\ \hline
+        ColSum & 1181860 & 3320286 & 3461165 & 4744246 & 3784492 & 8856765 & 6565878 & 4031903 & 3521731 & 246169 & \cellcolor{green!10}39714495 \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2019} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        cat\# & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}718640 & 203302 & 172239 & 93576 & 43600 & 4256 & 18785 & 1009 & 154123 & 961 & 1410491 \\ \hline
+        Class 2 & 125598 & \cellcolor{green!10}1493295 & 662957 & 875909 & 62791 & 233 & 12810 & 1003 & 199881 & 2890 & 3437367 \\ \hline
+        Class 3 & 54049 & 77429 & \cellcolor{green!10}71198 & 263136 & 915884 & 1601573 & 838669 & 292464 & 542080 & 38583 & 4695065 \\ \hline
+        Class 4 & 54698 & 420455 & 224468 & \cellcolor{green!10}1593385 & 860119 & 197570 & 1208920 & 145740 & 498281 & 68378 & 5272014 \\ \hline
+        Class 5 & 100175 & 681102 & 2082822 & 353990 & \cellcolor{green!10}9774 & 12 & 1168 & 33 & 55344 & 1488 & 3285908 \\ \hline
+        Class 6 & 62037 & 74841 & 42628 & 229455 & 708692 & \cellcolor{green!10}3498641 & 1282209 & 997764 & 207553 & 73493 & 7177313 \\ \hline
+        Class 7 & 27615 & 96635 & 47774 & 265935 & 444419 & 2280163 & \cellcolor{green!10}1435551 & 1089070 & 182786 & 27049 & 5896997 \\ \hline
+        Class 8 & 22403 & 103576 & 69604 & 564151 & 491174 & 491554 & 1015617 & \cellcolor{green!10}231168 & 782133 & 20739 & 3792119 \\ \hline
+        Class 9 & 7734 & 84827 & 34720 & 226934 & 165732 & 728783 & 621082 & 968785 & \cellcolor{green!10}172290 & 5761 & 3016648 \\ \hline
+        Class 10 & 8316 & 75416 & 46918 & 267452 & 80567 & 52556 & 124414 & 300513 & 716496 & \cellcolor{green!10}6747 & 1679395 \\ \hline
+        ColSum & 1181265 & 3310878 & 3455328 & 4733923 & 3782752 & 8855341 & 6559225 & 4027549 & 3510967 & 246089 & \cellcolor{green!10}39663317 \\ \hline
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2020} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        \textbf{cat\#} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}683544 & 309023 & 99294 & 155266 & 51772 & 166487 & 46734 & 33393 & 90153 & 1763 & 1637429 \\ \hline
+        Class 2 & 140068 & \cellcolor{green!10}1405103 & 502303 & 960693 & 301650 & 1969 & 244355 & 7645 & 463950 & 15581 & 4043317 \\ \hline
+        Class 3 & 34985 & 29270 & \cellcolor{green!10}6265 & 56130 & 239734 & 1980369 & 393702 & 256511 & 33095 & 39034 & 3069095 \\ \hline
+        Class 4 & 37825 & 13154 & 4829 & \cellcolor{green!10}51406 & 404025 & 3157656 & 857426 & 692151 & 43581 & 53723 & 5315776 \\ \hline
+        Class 5 & 138477 & 671024 & 2455571 & 568894 & \cellcolor{green!10}34995 & 1184 & 15184 & 5799 & 152695 & 3956 & 4047779 \\ \hline
+        Class 6 & 51528 & 717269 & 267346 & 1543446 & 1005959 & \cellcolor{green!10}256180 & 637860 & 126776 & 660357 & 42351 & 5309072 \\ \hline
+        Class 7 & 18831 & 12591 & 2094 & 90961 & 386704 & 1777537 & \cellcolor{green!10}1583559 & 956054 & 54353 & 31397 & 4914081 \\ \hline
+        Class 8 & 44343 & 134707 & 147092 & 1003947 & 1035822 & 832105 & 1440973 & \cellcolor{green!10}404912 & 853895 & 42981 & 5940777 \\ \hline
+        Class 9 & 19763 & 43411 & 10566 & 249256 & 272111 & 597942 & 1194978 & 989956 & \cellcolor{green!10}638501 & 9637 & 4026121 \\ \hline
+        Class 10 & 18842 & 61878 & 10717 & 128166 & 71966 & 106674 & 222352 & 605939 & 610029 & \cellcolor{green!10}6357 & 1842920 \\ \hline
+        ColSum & 1188206 & 3397430 & 3506077 & 4808165 & 3804738 & 8878103 & 6637123 & 4079136 & 3600609 & 246780 & \cellcolor{green!10}40146367 \\ \hline
+
+        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2021} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+                \textbf{cat\#} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}702916 & 170016 & 144023 & 121055 & 160622 & 146539 & 319847 & 201335 & 17125 & 11327 & 1994805 \\ \hline
+        Class 2 & 137245 & \cellcolor{green!10}772838 & 405525 & 861919 & 482726 & 297935 & 637744 & 319340 & 133967 & 40635 & 4089874 \\ \hline
+        Class 3 & 100084 & 553381 & \cellcolor{green!10}1979310 & 375399 & 32820 & 15876 & 19359 & 17344 & 62178 & 772 & 3156523 \\ \hline
+        Class 4 & 52869 & 1280901 & 736804 & \cellcolor{green!10}1341217 & 227239 & 203122 & 179091 & 173844 & 332915 & 21818 & 4549820 \\ \hline
+        Class 5 & 31298 & 348878 & 82337 & 988002 & \cellcolor{green!10}669137 & 367343 & 590315 & 179041 & 732481 & 23781 & 4012613 \\ \hline
+        Class 6 & 82156 & 20454 & 2383 & 73286 & 843448 & \cellcolor{green!10}2928722 & 1185373 & 683802 & 52542 & 112618 & 5984784 \\ \hline
+        Class 7 & 14080 & 2677 & 12 & 10134 & 199861 & 3664407 & \cellcolor{green!10}1106320 & 869961 & 27095 & 16303 & 5910850 \\ \hline
+        Class 8 & 11133 & 3988 & 2954 & 140173 & 514342 & 987416 & 1809103 & \cellcolor{green!10}776155 & 79990 & 9808 & 4335062 \\ \hline
+        Class 9 & 53852 & 247468 & 154669 & 881230 & 602744 & 79115 & 361528 & 69245 & \cellcolor{green!10}1863006 & 6719 & 4319576 \\ \hline
+        Class 10 & 2991 & 1500 & 291 & 19321 & 73820 & 188976 & 432371 & 791227 & 303449 & \cellcolor{green!10}3076 & 1817022 \\ \hline
+        ColSum & 1188624 & 3402101 & 3508308 & 4811736 & 3806759 & 8879451 & 6641051 & 4081294 & 3604748 & 246857 & \cellcolor{green!10}40170929 \\ \hline        \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2022} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+         \textbf{cat\#} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}731146 & 290319 & 237623 & 291223 & 132078 & 263431 & 319057 & 187293 & 56788 & 22701 & 2531659 \\ \hline
+        Class 2 & 35991 & \cellcolor{green!10}11448 & 5617 & 16586 & 180690 & 2141375 & 456161 & 458916 & 27192 & 49483 & 3383459 \\ \hline
+        Class 3 & 18712 & 5274 & \cellcolor{green!10}1374 & 21109 & 225586 & 2424597 & 624656 & 524088 & 18643 & 21329 & 3885368 \\ \hline
+        Class 4 & 130449 & 1176764 & 483567 & \cellcolor{green!10}1149433 & 546547 & 352960 & 717444 & 317804 & 486570 & 39343 & 5400881 \\ \hline
+        Class 5 & 30884 & 35859 & 16397 & 213410 & \cellcolor{green!10}535419 & 1358447 & 1173149 & 582758 & 40234 & 37240 & 4023797 \\ \hline
+        Class 6 & 26411 & 18092 & 8246 & 150852 & 504812 & \cellcolor{green!10}1178353 & 1640165 & 765099 & 49838 & 32619 & 4374487 \\ \hline
+        Class 7 & 53164 & 1017166 & 636794 & 1598491 & 736672 & 375514 & \cellcolor{green!10}548660 & 219776 & 849537 & 30208 & 6065982 \\ \hline
+        Class 8 & 108133 & 594918 & 1948383 & 348009 & 32300 & 59628 & 18387 & \cellcolor{green!10}25360 & 138083 & 1559 & 3274760 \\ \hline
+        Class 9 & 24740 & 168328 & 93599 & 521826 & 575816 & 606032 & 927642 & 694886 & \cellcolor{green!10}707640 & 9358 & 4329867 \\ \hline
+        Class 10 & 32749 & 110613 & 91007 & 522968 & 352275 & 131057 & 246218 & 329246 & 1254761 & \cellcolor{green!10}3620 & 3074514 \\ \hline
+        ColSum & 1192379 & 3428781 & 3522607 & 4833907 & 3822195 & 8891394 & 6671539 & 4105226 & 3629286 & 247460 & \cellcolor{green!10}40344774 \\ \hline
+     \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\begin{table}[H] 
+\footnotesize
+    \centering
+    \begin{adjustwidth}{-\extralength}{0cm}
+    \caption{Calculated error matrix and kappa parameter for accuracy assessment of the classification results for Landsat 8 image on \textbf{2023} using 'r.kappa' module of GRASS GIS.\label{tab03}}
+ 	\begin{tabularx}{\fulllength}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+    \toprule
+        \textbf{cat\#} & \textbf{Class 1} & \textbf{Class 2} & \textbf{Class 3} & \textbf{Class 4} & \textbf{Class 5} & \textbf{Class 6} & \textbf{Class 7} & \textbf{Class 8} & \textbf{Class 9} & \textbf{Class 10} & \textbf{RowSum} \\ \hline
+        Class 1 & \cellcolor{green!10}696181 & 265690 & 210677 & 147949 & 47848 & 2351 & 28532 & 11048 & 318677 & 916 & 1729869 \\ \hline
+        Class 2 & 149373 & \cellcolor{green!10}875176 & 345372 & 679954 & 298325 & 17823 & 276754 & 36126 & 491199 & 13422 & 3183524 \\ \hline
+        Class 3 & 68987 & 1103574 & \cellcolor{green!10}616225 & 1449488 & 384491 & 27522 & 383103 & 58688 & 592878 & 31005 & 4715961 \\ \hline
+        Class 4 & 113808 & 718554 & 1928287 & \cellcolor{green!10}399929 & 82193 & 29429 & 53107 & 31572 & 253169 & 1602 & 3611650 \\ \hline
+        Class 5 & 36422 & 248019 & 189972 & 890162 & \cellcolor{green!10}567087 & 292147 & 1021289 & 370809 & 523327 & 29114 & 4168348 \\ \hline
+        Class 6 & 44185 & 40446 & 42802 & 309544 & 969941 & \cellcolor{green!10}1256540 & 1076897 & 398925 & 377458 & 54559 & 4571297 \\ \hline
+        Class 7 & 51650 & 18914 & 13974 & 115112 & 323824 & 4387107 & \cellcolor{green!10}966427 & 899834 & 55327 & 72308 & 6904477 \\ \hline
+        Class 8 & 17292 & 54481 & 80843 & 400775 & 627113 & 1343379 & 1726289 & \cellcolor{green!10}675519 & 195048 & 23051 & 5143790 \\ \hline
+        Class 9 & 9240 & 5475 & 4241 & 86789 & 210760 & 1163138 & 817121 & 1116546 & \cellcolor{green!10}54160 & 12431 & 3479901 \\ \hline
+        Class 10 & 7212 & 129323 & 102017 & 367368 & 311372 & 314712 & 311368 & 501372 & 792399 & \cellcolor{green!10}8292 & 2845435 \\ \hline
+        ColSum & 1194350 & 3459652 & 3534410 & 4847070 & 3822954 & 8834148 & 6660887 & 4100439 & 3653642 & 246700 & \cellcolor{green!10}40354252 \\ \hline
+     \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+\section[\appendixname~\thesection]{Clustering report of GRASS GIS: calculated for the Landsat image}\label{AppB}
+
+The example is given for the scene on 2016. All the other reports are provided in the author's GitHub repository along with GRASS GIS scripts: \\\href{https://github.com/paulinelemenkova/Sudd_South_Sudan_Image_Analysis}{https://github.com/paulinelemenkova/Sudd\_South\_Sudan\_Image\_Analysis}. 
+
+\begin{footnotesize}
+\begin{verbatim}
+#################### CLUSTER (Sun Jul  2 13:35:38 2023) ####################
+
+Location: SSudan
+Mapset:   PERMANENT
+Group:    L8_2016
+Subgroup: res_30m
+ L8_2016_01@PERMANENT
+ L8_2016_02@PERMANENT
+ L8_2016_03@PERMANENT
+ L8_2016_04@PERMANENT
+ L8_2016_05@PERMANENT
+ L8_2016_06@PERMANENT
+ L8_2016_07@PERMANENT
+Result signature file: cluster_L8_2016
+
+Region
+  North:    915615.00  East:    416415.00
+  South:    682785.00  West:    189555.00
+  Res:          30.00  Res:         30.00
+  Rows:          7761  Cols:         7562  Cells: 58688682
+Mask: no
+
+Cluster parameters
+  Nombre de classes initiales: 	10
+ Minimum class size:           17
+ Minimum class separation:     0.000000
+ Percent convergence:          98.000000
+ Maximum number of iterations: 30
+
+ Row sampling interval:        77
+ Col sampling interval:        75
+
+Sample size: 7018 points
+
+
+means and standard deviations for 7 bands
+
+moyennes 8341.81 8839.87 9796.06 10347 13521 14268 12593.9
+écart-type 333.559 397.401 538.123 866.886 1982.91 1927.26 1630.37
+
+
+initial means for each band
+
+classe 1    8008.25 8442.47 9257.94 9480.1 11538.1 12340.7 10963.6
+classe 2    8082.38 8530.78 9377.52 9672.74 11978.8 12769 11325.9
+classe 3    8156.5 8619.09 9497.1 9865.39 12419.4 13197.3 11688.2
+classe 4    8230.63 8707.41 9616.69 10058 12860.1 13625.5 12050.5
+classe 5    8304.75 8795.72 9736.27 10250.7 13300.7 14053.8 12412.8
+classe 6    8378.87 8884.03 9855.85 10443.3 13741.3 14482.1 12775.1
+classe 7    8453 8972.34 9975.43 10636 14182 14910.4 13137.4
+classe 8    8527.12 9060.65 10095 10828.6 14622.6 15338.7 13499.7
+classe 9    8601.25 9148.96 10214.6 11021.2 15063.3 15766.9 13862
+classe 10   8675.37 9237.27 10334.2 11213.9 15503.9 16195.2 14224.3
+
+
+class means/stddev for each band
+
+
+class 1 (742)
+moyennes 7951.81 8339.41 9061.5 9178.93 11076.1 10852.5 10158.2
+écart-type 257 262.216 327.764 454.974 1467.52 1336.4 1392.45
+
+class 2 (402)
+moyennes 8135.75 8577.49 9368.62 9690.99 12024.7 12474.3 11626.2
+écart-type 206.535 190.022 178.166 289.903 1227.6 363.851 1008.55
+
+class 3 (548)
+moyennes 8233.58 8669.82 9470.17 9846.65 12343.6 13017.8 12042.3
+écart-type 245.584 210.629 176.849 316.624 1339.17 373.941 1071.32
+
+class 4 (767)
+moyennes 8279.24 8738.97 9588.8 10030.2 12750 13501.6 12361
+écart-type 242.165 238.415 231.391 373.139 1383.88 409.177 1106.05
+
+class 5 (973)
+moyennes 8313.09 8784.31 9689.54 10170 13314.3 14001.5 12545.2
+écart-type 239.434 244.552 210.543 463.114 1560.73 423.344 1161.71
+
+class 6 (1048)
+moyennes 8315.49 8800.87 9775.46 10268.6 14087 14416.4 12578.4
+écart-type 241.751 268.06 233.945 562.31 1841.81 557.805 1274.18
+
+class 7 (810)
+moyennes 8395.39 8911.3 9925.59 10555 14249.5 14988.4 12993.8
+écart-type 226.309 252.265 238.656 532.931 1667.51 541.879 1186.87
+
+class 8 (589)
+moyennes 8451.32 9018.86 10096.9 10879.7 14397.7 15615.7 13388.1
+écart-type 244.289 296.493 347.211 510.795 1292.85 513.351 1030.24
+
+class 9 (383)
+moyennes 8542.06 9143.82 10280.9 11175.9 14651.7 16187.5 13737.7
+écart-type 226.471 215.073 232.586 443.034 1002.04 370.811 894.101
+
+class 10 (756)
+moyennes 8805.39 9451.85 10737.7 11805 15797.2 17600.5 14593.2
+écart-type 355.91 426.665 563.559 744.099 1255.16 1086.85 1233.36
+
+Distribution des classes
+        742        402        548        767        973
+       1048        810        589        383        756
+
+######## iteration 1 ###########
+10 classes, 63.02% points stable
+Distribution des classes
+        494        665        533        840        908
+       1068        608        721        664        517
+
+######## iteration 2 ###########
+10 classes, 75.24% points stable
+Distribution des classes
+        369        624        667        799        988
+       1017        765        661        709        419
+
+######## iteration 3 ###########
+10 classes, 86.09% points stable
+Distribution des classes
+        293        598        833        757        927
+        833        944        761        720        352
+
+######## iteration 4 ###########
+10 classes, 91.58% points stable
+Distribution des classes
+        249        599        869        818        947
+        716        943        818        747        312
+
+######## iteration 5 ###########
+10 classes, 94.69% points stable
+Distribution des classes
+        229        622        824        874       1009
+        648        896        865        751        300
+
+######## iteration 6 ###########
+10 classes, 96.21% points stable
+Distribution des classes
+        217        640        795        921       1023
+        604        851        930        742        295
+
+######## iteration 7 ###########
+10 classes, 97.08% points stable
+Distribution des classes
+        210        649        770        972       1018
+        582        807        984        735        291
+
+######## iteration 8 ###########
+10 classes, 98.10% points stable
+Distribution des classes
+        205        647        756       1014        994
+        574        779       1025        733        291
+
+########## final results #############
+10 classes (convergence=98.1%)
+
+class separability matrix
+
+
+         1     2     3     4     5     6     7     8     9    10
+
+  1      0
+  2    1.3     0
+  3    1.6   1.0     0
+  4    2.6   1.8   1.1     0
+  5    2.6   1.4   1.3   0.8     0
+  6    1.9   0.8   1.6   2.3   1.8     0
+  7    2.5   1.3   1.5   1.3   0.7   1.2     0
+  8    3.2   2.2   2.1   1.2   1.0   2.3   1.1     0
+  9    3.2   2.2   2.3   1.8   1.4   2.0   1.1   0.8     0
+ 10    3.6   2.8   2.9   2.4   2.2   2.7   2.0   1.5   1.0     0
+
+
+class means/stddev for each band
+
+
+class 1 (205)
+moyennes 7792.09 8125.77 8749.8 8685.25 9720.39 9033 8554.86
+écart-type 269.203 248.508 325.667 367.886 1192.41 1032.1 923.673
+
+class 2 (647)
+moyennes 7958.2 8386.62 9338.01 9492.04 13584.7 12120 10320.6
+écart-type 184.172 217.176 342.491 469.583 889.819 826.243 578.126
+
+class 3 (756)
+moyennes 8203 8635.6 9330.98 9704.04 11117.4 12400.5 11990.4
+écart-type 180.79 155.652 189.472 264.785 613.41 635.13 637.803
+
+class 4 (1014)
+moyennes 8474.28 8940.79 9705.86 10252.6 11769.3 13891.5 13495.2
+écart-type 245.105 171.081 169.501 243.028 399.04 444.049 495.903
+
+class 5 (994)
+moyennes 8293.53 8811.29 9742.85 10406.3 13008.9 14232 12696
+écart-type 152.479 155.328 213.418 325.007 427.795 473.935 481.045
+
+class 6 (574)
+moyennes 8070.27 8430.14 9509.54 9368.75 17090.2 13486.3 10600.1
+écart-type 167.24 165.95 253.195 345.468 1170.35 700.286 496.695
+
+class 7 (779)
+moyennes 8270.21 8760.55 9784.77 10342.1 14674.7 14922.2 12197.4
+écart-type 140.611 149.126 220.25 390.38 674.5 660.764 550.25
+
+class 8 (1025)
+moyennes 8556.69 9135.1 10148 11001.2 13308.2 15441.2 14126.3
+écart-type 230.6 188.688 211.968 304.661 564.956 535.661 698.561
+
+class 9 (733)
+moyennes 8568.91 9185.04 10382 11327.4 15261.8 16677 13644.6
+écart-type 254.495 334.43 432.144 536.085 844.786 635.139 713.034
+
+class 10 (291)
+moyennes 9044.36 9738.61 11135.6 12383.7 16390.7 18607.7 15523
+écart-type 348.47 409.735 566.885 667.853 1254.96 936.286 1038.31
+
+
+
+#################### CLASSES ####################
+
+10 classes, 98.10% points stable
+
+######## CLUSTER END (Sun Jul  2 13:35:38 2023) ########
+
+\end{verbatim}
+\end{footnotesize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+%\nocite{*}
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\bibliography{Sudd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+\end{document}

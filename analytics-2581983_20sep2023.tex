@@ -212,7 +212,7 @@ Specifically, the study area is situated around  Lake No, near the Bahr al-Jabal
 \centering
 	\includegraphics[width=16.5 cm]{Fig_02.jpg}
 \end{adjustwidth}
-\caption{Surficial geologic units in South Sudan and surrounding area. Software: \hl{QGIS}.  %MDPI: Please state the version number of the software.
+\caption{Surficial geologic units in South Sudan and surrounding area. Software: QGIS version 3.32.  %MDPI: Please state the version number of the software. % Author's reply: yes, added.
 Data source: USGS. Map source: author.
 \label{fig02}}
 \end{figure}
@@ -223,7 +223,7 @@ The Nile River basin forms a part of the Great Rift Valley, which originated fro
 The Sudd wetlands are formed as a downstream of Lake Victoria and Lake Albert in the Nile Basin in the Sudd geologic province~\cite{1792135} (Figure \ref{fig03}). % Please check intended meaning is retained.
 Recently detected diatoms proved the existence of the large Lake Sudd, which covered central and southern Sudan during the Holocene, when active tectonic structures significantly reduced their activity, acquiring the segmented character of the Sudd wetlands~\cite{ELSHAFIE201113}. Other studies also reported the existing series of the interconnected basins along the Nile distributed over the territory of the modern Sudd province (Figure \ref{fig03}) during the Tertiary period~\cite{SALAMA1987899}. Such palaeographic conditions contributed to further development of the current lacustrine environment in the Sudd. The dominated soil type in the Sudd wetlands is heavy clays and fine-grained sedimentary rocks~\cite{Wolman}. Clayey soil creates favourable conditions for the formation of wetlands due to  high impermeability and low porosity, which contribute to the accumulation of water~\cite{Lindh202222}. As a consequence, a highly specific hydrogeological structure of the impermeable clays results in a very limited groundwater influence on the hydrology of the Sudd, where a top layer of vertisol is about 50~cm, and sands are distributed at depths of 30 m and below~\cite{whiteman1971geology}. 
 
-Climate factors affect the Sudd swamps through water balance~\cite{SutcliffeParks} and evaporation~\cite{DIVITTORIO2021100922}. {The average temperature is 18.5 \hl{C,} %MDPI: Please confirm  if C should be $^\circ$C.
+Climate factors affect the Sudd swamps through water balance~\cite{SutcliffeParks} and evaporation~\cite{DIVITTORIO2021100922}. {The average temperature is 18.5 $^\circ$C, %MDPI: Please confirm  if C should be $^\circ$C. % Author's reply: yes, exactly (corrected).
  while the precipitation is 320 mm. }High evaporation over the Sudd marshes results in strong effects on the regional water cycle of the Nile hydrology, which is amplified to a large extent by the Sudd wetland area: it is the largest wetland area existing in the world and the largest freshwater swamp region in the Nile Basin~\cite{Woodward}. The environmental measures were undertaken to decrease  evaporation from the Sudd by constructing Jonglei channels~\cite{SutcliffeParks1987}. % Please check intended meaning is retained.
 
 \begin{figure}[H]
@@ -231,7 +231,7 @@ Climate factors affect the Sudd swamps through water balance~\cite{SutcliffePark
 \centering
 	\includegraphics[width=16.5 cm]{Fig_03.jpg}
 \end{adjustwidth}
-\caption{Geologic provinces in South Sudan and surroundings. Software: \hl{QGIS}.  %MDPI: Please state the version number of the software.
+\caption{Geologic provinces in South Sudan and surroundings. Software: QGIS version 3.32.  %MDPI: Please state the version number of the software. % Author's reply: yes, added.
 Data source: USGS. Map source: author.
 \label{fig03}}
 \end{figure}
@@ -259,7 +259,7 @@ A general scheme summarising the approach in this study is visualised in Figure 
 \centering 
 	\includegraphics[width=16 cm]{Fig_04}
 \end{adjustwidth}
-\caption{Methodological flowchart scheme. Software: \hl{R}. %MDPI: Please state the version number of the software.
+\caption{Methodological flowchart scheme. Software: R version 4.3.1. %MDPI: Please state the version number of the software. % Author's reply: yes, added.
 Graph source: author.
 \label{fig04}}
 \end{figure}
@@ -269,17 +269,11 @@ Graph source: author.
 
 The full dataset included in the framework is available at the United States Geological Survey (USGS) (Figure \ref{fig05}.) 
 
-The Landsat images from 8 and 9 OLI/TIRS sensors were downloaded from the EarthExplorer repository \href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/} (\hl{accessed on}). %MDPI: Please provide the access date of the URL in the following format: "URL (accessed on Day Month Year)".
+The Landsat images from 8 and 9 OLI/TIRS sensors were downloaded from the EarthExplorer repository: URL \href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/} (accessed on 30 July 2023). %MDPI: Please provide the access date of the URL in the following format: "URL (accessed on Day Month Year)". % Author's reply: yes, corrected.
  {The EarthExplorer} aims at Earth observation data, collected for the multiscale monitoring of Earth-related processes using remote sensing data. % Please check intended meaning is retained.
  It is supported by the USGS, which coordinates and promotes storage of the datasets in digital format for queries. It enables downloading the satellite images and provides cartographic information for data. Besides  Landsat, it also supports other remote sensing products, such as radar data, aerial imagery, Digital Elevation Models (DEM), Advanced Very High Resolution Radiometer (AVHRR), etc. {The reason for the nine satellite images consists in demonstrating the dynamics of the land cover types within a comparable period. Another reason consists in the available images with low cloudiness, which are below 10\% for the scenes takes in the appropriate seasons.}
 
-The images cover 9 years, from 2015 to 2023, Figure \ref{fig05}. {These years were chosen for the two following factors: the availability of the cloud-free images or those with minimised cloudiness (below 10\%) and the gap between the years enabling the comparison and analysis of  environmental dynamics.} % Please check intended meaning is retained.
-The choice of image data is explained by the two criteria: (1) the cloudiness of the image is below 10\% for all the scenes; (2) the images are captured in the dry period to objectively assess the postflood scenario. % Please check intended meaning is retained.
-The wet period of the Sudd region is accompanied by heavy rainfalls that last throughout the summer period. % Please check intended meaning is retained.
-The exact period differs significantly by year and, according to various information sources, may last between April and September~\cite{MartinBurgess} or from March to October, according to the Climate Change Knowledge Portal. {The data import was performed using the `r.import' command in the GRASS GIS module. The scripts are shown in the appendix of this study with the code for data import.}
-
-
-The greatest concentration of rainfalls in the Sudd is recorded between June and September~\cite{Climatic}. Therefore, all the images were taken during the dry period to avoid the months from June to September. Since flooding and seasonal dynamics vary yearly, each scene was inspected to evaluated the quality and distinguished contours of the diverse land cover types. Each Landsat OLI/TIRS image included eleven spectral bands in visual, panchromatic, and near-infrared channels. Besides the satellite Landsat images, this study also included auxiliary data, such as topographic data (GEBCO/SRTM grid), geologic USGS data, and descriptive information from textual sources regarding the social and economic activities in the Sudd region, as well as statistical and descriptive environmental reports on South Sudan available online), which were used for environmental analysis.
+The images cover 9 years, from 2015 to 2023, Figure \ref{fig05}. 
 
 \begin{figure}[H]
 %\hspace{50pt}
@@ -347,6 +341,14 @@ The greatest concentration of rainfalls in the Sudd is recorded between June and
 \caption{The Sudd wetlands in the Landsat images in natural colours for 8 recent years (2015--2023). {The acquisition period of each image is as follows: (1) \hl{8 January 2015},  %MDPI: we changed the format of date according to our regulations. Please confirm.
 (2) 12 February 2016; (3) 31 December 2017; (4) 1 February 2018; (5) 8 March 2019; (6) 26 March 2020; (7) 29 March 2021; (8) 19 January 2022; (9) 14 May 2023.}}\label{fig05}
 \end{figure}
+
+{These years were chosen for the two following factors: the availability of the cloud-free images or those with minimised cloudiness (below 10\%) and the gap between the years enabling the comparison and analysis of  environmental dynamics.} % Please check intended meaning is retained.
+The choice of image data is explained by the two criteria: (1) the cloudiness of the image is below 10\% for all the scenes; (2) the images are captured in the dry period to objectively assess the postflood scenario. % Please check intended meaning is retained.
+The wet period of the Sudd region is accompanied by heavy rainfalls that last throughout the summer period. % Please check intended meaning is retained.
+The exact period differs significantly by year and, according to various information sources, may last between April and September~\cite{MartinBurgess} or from March to October, according to the Climate Change Knowledge Portal. {The data import was performed using the `r.import' command in the GRASS GIS module. The scripts are shown in the appendix of this study with the code for data import.}
+
+The greatest concentration of rainfalls in the Sudd is recorded between June and September~\cite{Climatic}. Therefore, all the images were taken during the dry period to avoid the months from June to September. Since flooding and seasonal dynamics vary yearly, each scene was inspected to evaluated the quality and distinguished contours of the diverse land cover types. Each Landsat OLI/TIRS image included eleven spectral bands in visual, panchromatic, and near-infrared channels. Besides the satellite Landsat images, this study also included auxiliary data, such as topographic data (GEBCO/SRTM grid), geologic USGS data, and descriptive information from textual sources regarding the social and economic activities in the Sudd region, as well as statistical and descriptive environmental reports on South Sudan available online), which were used for environmental analysis.
+
 \subsection{Data Preprocessing}
 
 The overview topographic map of the study area shown in Figure \ref{fig01} was mapped using the Generic Mapping Tools (GMT) software version 6.1.1.~\cite{Wessel}. The applied GMT scripting technique was derived from the existing works~\cite{Lemenkova202203,data7060074}. The geological maps were plotted using QGIS. The remaining workflow was performed using the GRASS GIS using diverse modules, following existing similar works using GRASS GIS in environmental applications~\cite{HOFIERKA201720,JASIEWICZ20111162,JASIEWICZ20111525,SOROKINE2007685}. A folder with the uploaded Landsat imagery was stored in the `Location/Mapset' working directory of the GRASS GIS with relevant subdirectories. Here, all the map layers were located and hierarchy-supported for imported satellite images following the standard GRASS GIS workflow~\cite{NETELER2012124}. The codes were written using the Xcode and run from the GRASS GIS console. The files were imported in TIFF format using Listing~\ref{lst01} and stored in the WGS84 coordinate system. 
